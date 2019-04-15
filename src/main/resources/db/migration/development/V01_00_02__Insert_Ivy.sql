@@ -91,12 +91,12 @@ INSERT INTO public.menu(description, name, type) VALUES (
 
 INSERT INTO public.menu(description, name, type) VALUES (
 		'Teigwaren enthalten Ei und Getreide', 
-		'Schweins Cordon Bleu mit Wintergemüse und Teigwaren, Blattsalat', 
+		'Schweins Cordon Bleu mit Wintergemuese und Teigwaren, Blattsalat', 
 		0
 	);
 	
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Dillquarkdipp enthält Michlprodukte', 
+		'Dillquarkdipp enthaelt Michlprodukte', 
 		'Schinkensandwich, Dillquarkdipp, Blattsalat', 
 		0
 	);
@@ -127,7 +127,7 @@ INSERT INTO public.menu(description, name, type) VALUES (
 	
 INSERT INTO public.menu(description, name, type) VALUES (
 		'', 
-		'Frühlingsrollen mit Schwein, Blattsalat', 
+		'Fruehlingsrollen mit Schwein, Blattsalat', 
 		0
 	);	
 	
@@ -138,14 +138,14 @@ INSERT INTO public.menu(description, name, type) VALUES (
 	);	
 	
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Die Suppe enthällt ein Rollschinken (Schwein).', 
-		'Bündner Gerstensuppe, Blattsalat', 
+		'Die Suppe enthaellt ein Rollschinken (Schwein).', 
+		'Buendner Gerstensuppe, Blattsalat', 
 		0
 	);
 	
 INSERT INTO public.menu(description, name, type) VALUES (
 		'Regionale Kartoffeln.', 
-		'Schweinsplätzchen mit Bratkartoffeln, Blattsalat', 
+		'Schweinsplaetzchen mit Bratkartoffeln, Blattsalat', 
 		0
 	);
 
@@ -156,20 +156,20 @@ INSERT INTO public.menu(description, name, type) VALUES (
 	);
 	
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Enthält: Getreide, Milch und Eier.', 
+		'Enthaelt: Getreide, Milch und Eier.', 
 		'Omeletten mit Speck, Blattsalat', 
 		0
 	);	
 	
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Enthält: Getreide, Milchprodukte und Eier.', 
+		'Enthaelt: Getreide, Milchprodukte und Eier.', 
 		'Burger mit Speck und Pommes, Blattsalat', 
 		0
 	);	
 	
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Enthält: Getreide, Milchprodukte und Eier.', 
-		'Kalte Platte mit Schwein (Würste, Trockenfleisch usw.), Brot, Blattsalat', 
+		'Enthaelt: Getreide, Milchprodukte und Eier.', 
+		'Kalte Platte mit Schwein (Wuerste, Trockenfleisch usw.), Brot, Blattsalat', 
 		0
 	);
 	
@@ -184,12 +184,12 @@ INSERT INTO public.menu(description, name, type) VALUES (
 
 INSERT INTO public.menu(description, name, type) VALUES (
 		'Teigwaren enthalten Ei und Getreide', 
-		'Hackbraten mit Wintergemüse und Teigwaren, Blattsalat', 
+		'Hackbraten mit Wintergemuese und Teigwaren, Blattsalat', 
 		1
 	);
 	
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Dillquarkdipp enthält Michlprodukte', 
+		'Dillquarkdipp enthaelt Michlprodukte', 
 		'Quiche mit Lachs und Brokkoli, Dillquarkdipp, Blattsalat', 
 		1
 	);
@@ -220,7 +220,7 @@ INSERT INTO public.menu(description, name, type) VALUES (
 	
 INSERT INTO public.menu(description, name, type) VALUES (
 		'', 
-		'Frühlingsrollen mit Crevetten, Blattsalat', 
+		'Fruehlingsrollen mit Crevetten, Blattsalat', 
 		1
 	);	
 	
@@ -231,14 +231,14 @@ INSERT INTO public.menu(description, name, type) VALUES (
 	);	
 	
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Die Suppe enthällt ein Suppenhuhn.', 
-		'Gemüse-Hühnersuppe, Blattsalat', 
+		'Die Suppe enthaellt ein Suppenhuhn.', 
+		'Gemuese-Huehnersuppe, Blattsalat', 
 		1
 	);
 	
 INSERT INTO public.menu(description, name, type) VALUES (
 		'Regionale Kartoffeln.', 
-		'Rindsplätzchen mit Bratkartoffeln, Blattsalat', 
+		'Rindsplaetzchen mit Bratkartoffeln, Blattsalat', 
 		1
 	);
 	
@@ -255,14 +255,14 @@ INSERT INTO public.menu(description, name, type) VALUES (
 	);
 	
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Enthält: Getreide, Milch und Eier.', 
+		'Enthaelt: Getreide, Milch und Eier.', 
 		'Rinds-Burger und Pommes, Blattsalat', 
 		1
 	);	
 	
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Enthält: Getreide, Milchprodukte und Eier.', 
-		'Kalte Platte mit Rind (Würste, Trockenfleisch usw.), Brot, Blattsalat', 
+		'Enthaelt: Getreide, Milchprodukte und Eier.', 
+		'Kalte Platte mit Rind (Wuerste, Trockenfleisch usw.), Brot, Blattsalat', 
 		1
 	);	
 
@@ -271,37 +271,37 @@ INSERT INTO public.menu(description, name, type) VALUES (
  */
 INSERT INTO public.menu(description, name, type) VALUES (
 		'', 
-		'Gemüse Pfanne mit Reis und Blumenkohl, Blattsalat', 
+		'Gemuese Pfanne mit Reis und Blumenkohl, Blattsalat', 
 		2
 	);
 
 INSERT INTO public.menu(description, name, type) VALUES (
 		'Teigwaren enthalten Ei und Getreide', 
-		'Wintergemüse Pfanne mit Teigwaren, Blattsalat', 
+		'Wintergemuese Pfanne mit Teigwaren, Blattsalat', 
 		2
 	);
 	
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Dillquarkdipp enthält Michlprodukte', 
-		'Gemüsequiche, Dillquarkdipp, Blattsalat', 
+		'Dillquarkdipp enthaelt Michlprodukte', 
+		'Gemuesequiche, Dillquarkdipp, Blattsalat', 
 		2
 	);
 	
 INSERT INTO public.menu(description, name, type) VALUES (
 		'', 
-		'Pommes mit Gemüse-Frikadellen', 
+		'Pommes mit Gemuese-Frikadellen', 
 		2
 	);
 	
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Regionales Gemüse.', 
-		'Gemüseeintopf, Blattsalat', 
+		'Regionales Gemuese.', 
+		'Gemueseeintopf, Blattsalat', 
 		2
 	);	
 	
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Enzhält: Getreide, Michl und Eier.', 
-		'Toast mit Frischkäse, Blattsalat', 
+		'Enzhaelt: Getreide, Michl und Eier.', 
+		'Toast mit Frischkaese, Blattsalat', 
 		2
 	);	
 	
@@ -313,7 +313,7 @@ INSERT INTO public.menu(description, name, type) VALUES (
 	
 INSERT INTO public.menu(description, name, type) VALUES (
 		'', 
-		'Frühlingsrollen, Blattsalat', 
+		'Fruehlingsrollen, Blattsalat', 
 		2
 	);	
 	
@@ -324,8 +324,8 @@ INSERT INTO public.menu(description, name, type) VALUES (
 	);	
 	
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Die Suppe enthällt kein Fleisch.', 
-		'Gemüsesuppe, Blattsalat', 
+		'Die Suppe enthaellt kein Fleisch.', 
+		'Gemuesesuppe, Blattsalat', 
 		2
 	);
 	
@@ -342,20 +342,20 @@ INSERT INTO public.menu(description, name, type) VALUES (
 	);
 
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Enthält: Getreide, Milch und Eier.', 
-		'Omeletten mit Käse, Blattsalat', 
+		'Enthaelt: Getreide, Milch und Eier.', 
+		'Omeletten mit Kaese, Blattsalat', 
 		2
 	);
 	
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Enthält: Getreide, Milch und Eier.', 
+		'Enthaelt: Getreide, Milch und Eier.', 
 		'Vegi-Burger mit Pommes, Blattsalat', 
 		2
 	);	
 	
 INSERT INTO public.menu(description, name, type) VALUES (
-		'Enthält: Getreide, Milchprodukte und Eier.', 
-		'Gemüse, Käseplatte, Brot, Blattsalat', 
+		'Enthaelt: Getreide, Milchprodukte und Eier.', 
+		'Gemuese, Kaeseplatte, Brot, Blattsalat', 
 		2
 	);	
 	
@@ -411,7 +411,7 @@ INSERT INTO public.orders(amount_nopork, amount_normal, amount_vegi, notice) VAL
 		5, 
 		10, 
 		5, 
-		'Drei Kinder und ein Betreuer. Für Xy bitte die Vegi-Mahlzeiten pürieren.'
+		'Drei Kinder und ein Betreuer. Fuer Xy bitte die Vegi-Mahlzeiten puerieren.'
 	);		
 	
 INSERT INTO public.orders(amount_nopork, amount_normal, amount_vegi, notice) VALUES (
