@@ -43,7 +43,7 @@ public class Menuplan extends ExtendedEntity {
 		)
 	private Set<Orders> orders;
 	
-	public void Menuplan() {}
+	public Menuplan() {}
 
 	/**
 	 * 

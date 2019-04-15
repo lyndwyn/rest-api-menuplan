@@ -36,8 +36,8 @@ import io.swagger.annotations.AuthorizationScope;
 @RestController
 @RequestMapping("/authorities")
 @Api(
-		value = "Address Controller",
-		description = "This class holds all REST endpoints targeted towards the entity address",
+		value = "Authority Controller",
+		description = "This class holds all REST endpoints targeted towards the entity authority",
 		authorizations = {
 				@Authorization(
 					value = "predefined authorization scheme",
