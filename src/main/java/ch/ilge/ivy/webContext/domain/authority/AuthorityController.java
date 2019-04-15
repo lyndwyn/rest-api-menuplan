@@ -5,11 +5,14 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ch.ilge.ivy.config.validation.GenericValidator;
 import ch.ilge.ivy.webContext.domain.authority.dto.AuthorityDTO;
 import ch.ilge.ivy.webContext.domain.authority.dto.AuthorityMapper;
 import io.swagger.annotations.Api;
@@ -48,27 +52,48 @@ import io.swagger.annotations.AuthorizationScope;
 							) }
 				) }
 	)
-@PreAuthorize("hasAuthority('WRITE')")
+@PreAuthorize("hasAuthority('MASTER')")
 public class AuthorityController {
 
 	private AuthorityService authorityService;
 	
 	private AuthorityMapper authorityMapper;
 	
+	private GenericValidator genericValidator;
+	
 	/**
 	 * 
 	 */
 	public AuthorityController() {}
 	
+	
 	/**
 	 * 
 	 * @param authorityService
 	 * @param authorityMapper
+	 * @param genericValidator
 	 */
 	@Autowired
-	public AuthorityController(AuthorityService authorityService, AuthorityMapper authorityMapper) {
+	public AuthorityController(
+			AuthorityService authorityService, AuthorityMapper authorityMapper, GenericValidator genericValidator) {
+		super();
 		this.authorityService = authorityService;
 		this.authorityMapper = authorityMapper;
+		this.genericValidator = genericValidator;
+	}
+
+	/**
+	 * This method handles the Validation
+	 *
+	 * @param dataBinder DataBinder binds data from the web request parameters to
+	 *                       JavaBean objects
+	 */
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+		StringTrimmerEditor stringtrimmer = new StringTrimmerEditor(true);
+		dataBinder.registerCustomEditor(String.class, stringtrimmer);
+		
+		dataBinder.addValidators(genericValidator);
 	}
 
 	/**
@@ -79,11 +104,12 @@ public class AuthorityController {
 	 */
 	@ApiOperation(
 	value = "This endpoint returns the requested authority",
-	response = Authority.class
+	response = AuthorityDTO.class
 	)
 	@ApiImplicitParams(
 		{ @ApiImplicitParam(
-			value = "Id of requested authority",
+			name = "id",
+			value = "Authority ID",
 			required = true
 		) }
 	)
@@ -100,10 +126,10 @@ public class AuthorityController {
 	 */
 	@ApiOperation(
 		value = "This endpoint returns all authorities",
-		response = Authority.class
+		response = AuthorityDTO.class
 	)
 	@GetMapping({ "", "/" })
-	public ResponseEntity<Iterable<AuthorityDTO>> getAll() {
+	public @ResponseBody ResponseEntity<Iterable<AuthorityDTO>> getAll() {
 		List<Authority> authorities = authorityService.findAll();
 		return new ResponseEntity<>(authorityMapper.toDTOs(authorities), HttpStatus.OK);
 	}
@@ -115,11 +141,12 @@ public class AuthorityController {
 	 */
 	@ApiOperation(
 		value = "This endpoint creates an authority",
-		response = Authority.class
+		response = AuthorityDTO.class
 	)
 	@ApiImplicitParams(
 		{ @ApiImplicitParam(
-			value = "The authority to be created",
+			name = "authority",
+			value = "Authority Object",
 			required = true
 		) }
 	)
@@ -143,16 +170,17 @@ public class AuthorityController {
 	 */
 	@ApiOperation(
 		value = "This endpoint updates the requested authority",
-		response = Authority.class
+		response = Void.class
 	)
 	@ApiImplicitParams(
 		{ @ApiImplicitParam(
-			value = "The logged in authority",
+			name = "authority",
+			value = "Authority Object",
 			required = true
 		) }
 	)
 	@PutMapping("/{id}")
-	public ResponseEntity<AuthorityDTO> updateById(@PathVariable Long id, @Valid @RequestBody AuthorityDTO authorityDTO) {
+	public @ResponseBody ResponseEntity<AuthorityDTO> updateById(@PathVariable Long id, @Valid @RequestBody AuthorityDTO authorityDTO) {
 		// ensure authorityID's are the same
 		authorityDTO.setId(id);
 		
@@ -170,11 +198,12 @@ public class AuthorityController {
 	 */
 	@ApiOperation(
 		value = "This endpoint deletes the requested authority",
-		response = Authority.class
+		response = Void.class
 	)
 	@ApiImplicitParams(
 		{ @ApiImplicitParam(
-			value = "Id of requested authority",
+			name = "id",
+			value = "Authority ID",
 			required = true
 		) }
 	)

@@ -47,7 +47,7 @@ import io.swagger.annotations.AuthorizationScope;
 					) }
 		) }
 	)
-@PreAuthorize("hasAuthority('READ')")
+@PreAuthorize("hasAuthority('MASTER')")
 public class UserController {
 	
 	private UserService userService;
