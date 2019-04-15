@@ -96,7 +96,7 @@ ALTER TABLE public.authority_role OWNER TO postgres;
 CREATE TABLE public.menu (
     id bigint NOT NULL,
     description character varying(250),
-    name character varying(50) NOT NULL,
+    name character varying(100) NOT NULL,
     type smallint NOT NULL
 );
 
