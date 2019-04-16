@@ -1,6 +1,17 @@
 package ch.ilge.ivy.webContext.domain.menuplan;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -22,6 +33,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ch.ilge.ivy.config.validation.GenericValidator;
+import ch.ilge.ivy.webContext.domain.menu.Menu;
+import ch.ilge.ivy.webContext.domain.menu.MenuService;
 import ch.ilge.ivy.webContext.domain.menuplan.dto.MenuplanDTO;
 import ch.ilge.ivy.webContext.domain.menuplan.dto.MenuplanMapper;
 import io.swagger.annotations.Api;
@@ -57,6 +70,8 @@ public class MenuplanController {
 
 	private MenuplanService menuplanService;
 	
+	private MenuService menuService;
+	
 	private MenuplanMapper menuplanMapper;
 	
 	private GenericValidator genericValidator;
@@ -73,8 +88,9 @@ public class MenuplanController {
 	 * @param genericValidator
 	 */
 	@Autowired
-	public MenuplanController(MenuplanService menuplanService, MenuplanMapper menuplanMapper, GenericValidator genericValidator) {
+	public MenuplanController(MenuplanService menuplanService, MenuService menuService, MenuplanMapper menuplanMapper, GenericValidator genericValidator) {
 		this.menuplanService = menuplanService;
+		this.menuService = menuService;
 		this.menuplanMapper = menuplanMapper;
 		this.genericValidator = genericValidator;
 	}
@@ -211,5 +227,35 @@ public class MenuplanController {
 		menuplanService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-
+	
+	/**
+	 * This method returns a generated menuplan with no orders
+	 * 
+	 * @return A generated menuplan
+	 */
+	@ApiOperation(
+		value = "This endpoint returns a generated menuplan",
+		response = MenuplanDTO.class
+	)
+	@GetMapping({ "/generate"})
+	@PreAuthorize("hasAuthority('EDIT')")
+	public @ResponseBody ResponseEntity<MenuplanDTO> generateMenuplan() {
+		
+		// Get random Menus (from each type five)
+		Set<Menu> menus = menuService.getRandomMenus();
+		
+		// Set current calendar week and menuplan
+		Calendar cal = Calendar.getInstance();
+	    Date date=cal.getTime();
+		cal.setTime(date);
+		int week = cal.get(Calendar.WEEK_OF_YEAR);
+		
+		Menuplan menuplan = new Menuplan(week, menus, null) ;
+		
+		// save generated menuplan
+		menuplanService.save(menuplan);
+		
+		return new ResponseEntity<>(menuplanMapper.toDTO(menuplan), HttpStatus.CREATED);
+	}
+	
 }

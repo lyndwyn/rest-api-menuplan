@@ -1,6 +1,7 @@
 package ch.ilge.ivy.webContext.domain.menu;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ch.ilge.ivy.config.validation.GenericValidator;
 import ch.ilge.ivy.webContext.domain.menu.dto.MenuDTO;
 import ch.ilge.ivy.webContext.domain.menu.dto.MenuMapper;
+import ch.ilge.ivy.webContext.domain.menuplan.dto.MenuplanDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -119,7 +121,7 @@ public class MenuController {
 	/**
 	 * This method returns all menus
 	 * 
-	 * @return
+	 * @return	all menus
 	 */
 	@ApiOperation(
 		value = "This endpoint returns all menus",
