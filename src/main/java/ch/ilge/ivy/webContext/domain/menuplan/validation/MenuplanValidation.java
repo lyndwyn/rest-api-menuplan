@@ -25,7 +25,7 @@ public class MenuplanValidation extends ExtendedValidation {
 	}
 	
 	/**
-	 * This method validates the calendar_week-field. It checks if the type is 
+	 * This method validates the calendar_week-field. It checks if the calendar_week is 
 	 * between 0-52 and if its empty or has whitespace.
 	 * 
 	 * @param errors  error Stores and exposes information about data-binding and

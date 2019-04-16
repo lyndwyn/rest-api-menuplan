@@ -10,7 +10,7 @@ import ch.ilge.ivy.config.validation.annotation.Validation;
 import ch.ilge.ivy.webContext.domain.menu.dto.MenuDTO;
 
 /**
- * This class validates the Entity Tole
+ * This class validates the Entity Menu
  *
  * @author Laura Steiner
  */

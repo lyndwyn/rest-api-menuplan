@@ -10,11 +10,11 @@ import ch.ilge.ivy.config.generic.ExtendedDTO;
  */
 public class OrderDTO extends ExtendedDTO {
 	
-	private int amountNormal;
+	private Integer amountNormal;
 	
-	private int amountNopork;
+	private Integer amountNopork;
 	
-	private int amountVegi;
+	private Integer amountVegi;
 	
 	private String notice;
 	
@@ -27,7 +27,7 @@ public class OrderDTO extends ExtendedDTO {
 	 * @param amountVegi
 	 * @param notice
 	 */
-	public OrderDTO(int amountNormal, int amountNopork, int amountVegi, String notice) {
+	public OrderDTO(Integer amountNormal, Integer amountNopork, Integer amountVegi, String notice) {
 		super();
 		this.amountNormal = amountNormal;
 		this.amountNopork = amountNopork;
@@ -43,7 +43,7 @@ public class OrderDTO extends ExtendedDTO {
 	 * @param amountVegi
 	 * @param notice
 	 */
-	public OrderDTO(Long id, int amountNormal, int amountNopork, int amountVegi, String notice) {
+	public OrderDTO(Long id, Integer amountNormal, Integer amountNopork, Integer amountVegi, String notice) {
 		super(id);
 		this.amountNormal = amountNormal;
 		this.amountNopork = amountNopork;
@@ -55,7 +55,7 @@ public class OrderDTO extends ExtendedDTO {
 	/**
 	 * @return the amountNormal
 	 */
-	public int getAmountNormal() {
+	public Integer getAmountNormal() {
 		return amountNormal;
 	}
 
@@ -63,7 +63,7 @@ public class OrderDTO extends ExtendedDTO {
 	/**
 	 * @param amountNormal the amountNormal to set
 	 */
-	public void setAmountNormal(int amountNormal) {
+	public void setAmountNormal(Integer amountNormal) {
 		this.amountNormal = amountNormal;
 	}
 
@@ -71,7 +71,7 @@ public class OrderDTO extends ExtendedDTO {
 	/**
 	 * @return the amountNopork
 	 */
-	public int getAmountNopork() {
+	public Integer getAmountNopork() {
 		return amountNopork;
 	}
 
@@ -79,7 +79,7 @@ public class OrderDTO extends ExtendedDTO {
 	/**
 	 * @param amountNopork the amountNopork to set
 	 */
-	public void setAmountNopork(int amountNopork) {
+	public void setAmountNopork(Integer amountNopork) {
 		this.amountNopork = amountNopork;
 	}
 
@@ -87,7 +87,7 @@ public class OrderDTO extends ExtendedDTO {
 	/**
 	 * @return the amountVegi
 	 */
-	public int getAmountVegi() {
+	public Integer getAmountVegi() {
 		return amountVegi;
 	}
 
@@ -95,7 +95,7 @@ public class OrderDTO extends ExtendedDTO {
 	/**
 	 * @param amountVegi the amountVegi to set
 	 */
-	public void setAmountVegi(int amountVegi) {
+	public void setAmountVegi(Integer amountVegi) {
 		this.amountVegi = amountVegi;
 	}
 

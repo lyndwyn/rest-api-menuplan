@@ -30,7 +30,7 @@ public class Menuplan extends ExtendedEntity {
 	
 	@ApiModelProperty(required = true)
 	@Column(name = "calendar_week")
-	private int calendarWeek;
+	private Integer calendarWeek;
 	
 	@ApiModelProperty(required = true)
 	@ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
@@ -51,7 +51,7 @@ public class Menuplan extends ExtendedEntity {
 	 * @param menus
 	 * @param orders
 	 */
-	public Menuplan(int calendarWeek, Set<Menu> menus, Set<Orders> orders) {
+	public Menuplan(Integer calendarWeek, Set<Menu> menus, Set<Orders> orders) {
 		super();
 		this.calendarWeek = calendarWeek;
 		this.menus = menus;
@@ -65,7 +65,7 @@ public class Menuplan extends ExtendedEntity {
 	 * @param menus
 	 * @param orders
 	 */
-	public Menuplan(Long id, int calendarWeek, Set<Menu> menus, Set<Orders> orders) {
+	public Menuplan(Long id, Integer calendarWeek, Set<Menu> menus, Set<Orders> orders) {
 		super(id);
 		this.calendarWeek = calendarWeek;
 		this.menus = menus;
@@ -76,7 +76,7 @@ public class Menuplan extends ExtendedEntity {
 	/**
 	 * @return the calendarWeek
 	 */
-	public int getCalendarWeek() {
+	public Integer getCalendarWeek() {
 		return calendarWeek;
 	}
 
@@ -84,7 +84,7 @@ public class Menuplan extends ExtendedEntity {
 	/**
 	 * @param calendarWeek the calendarWeek to set
 	 */
-	public void setCalendarWeek(int calendarWeek) {
+	public void setCalendarWeek(Integer calendarWeek) {
 		this.calendarWeek = calendarWeek;
 	}
 

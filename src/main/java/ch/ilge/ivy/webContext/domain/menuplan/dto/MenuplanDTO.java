@@ -14,7 +14,7 @@ import ch.ilge.ivy.webContext.domain.order.Orders;
  */
 public class MenuplanDTO extends ExtendedDTO {
 
-	private int calendarWeek;
+	private Integer calendarWeek;
 	
 	private Set<Menu> menus;
 	
@@ -28,7 +28,7 @@ public class MenuplanDTO extends ExtendedDTO {
 	 * @param menus
 	 * @param orders
 	 */
-	public MenuplanDTO(int calendarWeek, Set<Menu> menus, Set<Orders> orders) {
+	public MenuplanDTO(Integer calendarWeek, Set<Menu> menus, Set<Orders> orders) {
 		super();
 		this.calendarWeek = calendarWeek;
 		this.menus = menus;
@@ -42,7 +42,7 @@ public class MenuplanDTO extends ExtendedDTO {
 	 * @param menus
 	 * @param orders
 	 */
-	public MenuplanDTO(Long id, int calendarWeek, Set<Menu> menus, Set<Orders> orders) {
+	public MenuplanDTO(Long id, Integer calendarWeek, Set<Menu> menus, Set<Orders> orders) {
 		super(id);
 		this.calendarWeek = calendarWeek;
 		this.menus = menus;
@@ -52,14 +52,14 @@ public class MenuplanDTO extends ExtendedDTO {
 	/**
 	 * @return the calendarWeek
 	 */
-	public int getCalendarWeek() {
+	public Integer getCalendarWeek() {
 		return calendarWeek;
 	}
 
 	/**
 	 * @param calendarWeek the calendarWeek to set
 	 */
-	public void setCalendarWeek(int calendarWeek) {
+	public void setCalendarWeek(Integer calendarWeek) {
 		this.calendarWeek = calendarWeek;
 	}
 

@@ -12,7 +12,7 @@ public class MenuDTO extends ExtendedDTO {
 	
 	private String name;
 	
-	private int type;
+	private Integer type;
 	
 	private String description;
 	
@@ -24,7 +24,7 @@ public class MenuDTO extends ExtendedDTO {
 	 * @param type
 	 * @param description
 	 */
-	public MenuDTO(String name, int type, String description) {
+	public MenuDTO(String name, Integer type, String description) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -38,7 +38,7 @@ public class MenuDTO extends ExtendedDTO {
 	 * @param type
 	 * @param description
 	 */
-	public MenuDTO(Long id, String name, int type, String description) {
+	public MenuDTO(Long id, String name, Integer type, String description) {
 		super(id);
 		this.name = name;
 		this.type = type;
@@ -65,7 +65,7 @@ public class MenuDTO extends ExtendedDTO {
 	/**
 	 * @return the type
 	 */
-	public int getType() {
+	public Integer getType() {
 		return type;
 	}
 
@@ -73,7 +73,7 @@ public class MenuDTO extends ExtendedDTO {
 	/**
 	 * @param type the type to set
 	 */
-	public void setType(int type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 

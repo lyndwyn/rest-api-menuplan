@@ -5,11 +5,14 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ch.ilge.ivy.config.validation.GenericValidator;
 import ch.ilge.ivy.webContext.domain.user.dto.UserDTO;
 import ch.ilge.ivy.webContext.domain.user.dto.UserMapper;
 import io.swagger.annotations.Api;
@@ -54,6 +58,8 @@ public class UserController {
 	
 	private UserMapper userMapper;
 	
+	private GenericValidator genericValidator;
+	
 	/**
 	 * 
 	 */
@@ -65,9 +71,24 @@ public class UserController {
 	 * @param userService
 	 */
 	@Autowired
-	public UserController(UserService userService, UserMapper userMapper) {
+	public UserController(UserService userService, UserMapper userMapper, GenericValidator genericValidator) {
 		this.userService = userService;
 		this.userMapper = userMapper;
+		this.genericValidator = genericValidator;
+	}
+	
+	/**
+	 * This method handles the Validation
+	 *
+	 * @param dataBinder DataBinder binds data from the web request parameters to
+	 *                       JavaBean objects
+	 */
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+		StringTrimmerEditor stringtrimmer = new StringTrimmerEditor(true);
+		dataBinder.registerCustomEditor(String.class, stringtrimmer);
+		
+		dataBinder.addValidators(genericValidator);
 	}
 	
 	/**
@@ -78,18 +99,18 @@ public class UserController {
 	 */
 	@ApiOperation(
 			value = "This endpoint returns the requested user",
-			response = User.class
+			response = UserDTO.class
 	)
 	@ApiImplicitParams(
 			{
 				@ApiImplicitParam(
-						value = "Id of requested user",
-						required = true
+					name = "id",
+					value = "Id of requested user",
+					required = true
 				)}
 	)
 	@GetMapping("/{id}")
-	@ResponseBody
-	public ResponseEntity<UserDTO> getById(@PathVariable Long id) {
+	public @ResponseBody ResponseEntity<UserDTO> getById(@PathVariable Long id) {
 		User user = userService.findById(id).get();
 		return new ResponseEntity<>(userMapper.toDTO(user), HttpStatus.OK);
 	}
@@ -101,10 +122,10 @@ public class UserController {
 	 */
 	@ApiOperation(
 			value = "This endpoint returns all users",
-			response = User.class
+			response = UserDTO.class
 	)
 	@GetMapping({"", "/"})
-	public ResponseEntity<List<UserDTO>> getAll() {
+	public @ResponseBody ResponseEntity<Iterable<UserDTO>> getAll() {
 		List<User> users = userService.findAll();
 		return new ResponseEntity<>(userMapper.toDTOs(users), HttpStatus.OK);
 	}
@@ -116,10 +137,11 @@ public class UserController {
 	 */
 	@ApiOperation(
 		value = "This endpoint creates an user",
-		response = User.class
+		response = UserDTO.class
 	)
 	@ApiImplicitParams(
 			{ @ApiImplicitParam(
+				name = "user",
 				value = "The user to be created",
 				required = true
 			)}
@@ -143,16 +165,17 @@ public class UserController {
 	 */
 	@ApiOperation(
 			value = "This endpoint updates the requested user",
-			response = User.class
+			response = Void.class
 		)
 		@ApiImplicitParams(
 				{ @ApiImplicitParam(
+					name = "user",
 					value = "The logged in user",
 					required = true
 				) }
 			)
 		@PutMapping("/{id}")
-		public ResponseEntity<UserDTO> updateById(@PathVariable Long id, @Valid @RequestBody UserDTO userDTO) {
+		public @ResponseBody ResponseEntity<UserDTO> updateById(@PathVariable Long id, @Valid @RequestBody UserDTO userDTO) {
 		// ensure ID's are the same
 		userDTO.setId(id);
 		
@@ -170,10 +193,11 @@ public class UserController {
 	 */
 	@ApiOperation(
 		value = "This endpoint deletes the requested user",
-		response = User.class
+		response = Void.class
 	)
 	@ApiImplicitParams(
 		{ @ApiImplicitParam(
+			name = "id",
 			value = "Id of requested user",
 			required = true
 		) }

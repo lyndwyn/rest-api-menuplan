@@ -5,11 +5,14 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ch.ilge.ivy.config.validation.GenericValidator;
 import ch.ilge.ivy.webContext.domain.order.dto.OrderDTO;
 import ch.ilge.ivy.webContext.domain.order.dto.OrderMapper;
 import io.swagger.annotations.Api;
@@ -55,6 +59,8 @@ public class OrderController {
 	
 	private OrderMapper orderMapper;
 	
+	private GenericValidator genericValidator;
+	
 	/**
 	 * 
 	 */
@@ -64,11 +70,27 @@ public class OrderController {
 	 * 
 	 * @param orderService
 	 * @param orderMapper
+	 * @param genericValidator
 	 */
 	@Autowired
-	public OrderController(OrderService orderService, OrderMapper orderMapper) {
+	public OrderController(OrderService orderService, OrderMapper orderMapper, GenericValidator genericValidator) {
 		this.orderService = orderService;
 		this.orderMapper = orderMapper;
+		this.genericValidator = genericValidator;
+	}
+	
+	/**
+	 * This method handles the Validation
+	 *
+	 * @param dataBinder DataBinder binds data from the web request parameters to
+	 *                       JavaBean objects
+	 */
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+		StringTrimmerEditor stringtrimmer = new StringTrimmerEditor(true);
+		dataBinder.registerCustomEditor(String.class, stringtrimmer);
+		
+		dataBinder.addValidators(genericValidator);
 	}
 
 	/**
@@ -79,10 +101,11 @@ public class OrderController {
 	 */
 	@ApiOperation(
 	value = "This endpoint returns the requested order",
-	response = Orders.class
+	response = OrderDTO.class
 	)
 	@ApiImplicitParams(
 		{ @ApiImplicitParam(
+			name = "id",
 			value = "Id of requested order",
 			required = true
 		) }
@@ -100,10 +123,10 @@ public class OrderController {
 	 */
 	@ApiOperation(
 		value = "This endpoint returns all orders",
-		response = Orders.class
+		response = OrderDTO.class
 	)
 	@GetMapping({ "", "/" })
-	public ResponseEntity<Iterable<OrderDTO>> getAll() {
+	public @ResponseBody ResponseEntity<Iterable<OrderDTO>> getAll() {
 		List<Orders> orders = orderService.findAll();
 		return new ResponseEntity<>(orderMapper.toDTOs(orders), HttpStatus.OK);
 	}
@@ -119,6 +142,7 @@ public class OrderController {
 	)
 	@ApiImplicitParams(
 		{ @ApiImplicitParam(
+			name = "orders",
 			value = "The order to be created",
 			required = true
 		) }
@@ -147,13 +171,14 @@ public class OrderController {
 	)
 	@ApiImplicitParams(
 		{ @ApiImplicitParam(
+				name = "orders",
 			value = "The logged in order",
 			required = true
 		) }
 	)
 	@PutMapping("/{id}")
 	@PreAuthorize("hasAuthority('EDIT')")
-	public ResponseEntity<OrderDTO> updateById(@PathVariable Long id, @Valid @RequestBody OrderDTO orderDTO) {
+	public @ResponseBody ResponseEntity<OrderDTO> updateById(@PathVariable Long id, @Valid @RequestBody OrderDTO orderDTO) {
 		// ensure orderID's are the same
 		orderDTO.setId(id);
 		
@@ -175,6 +200,7 @@ public class OrderController {
 	)
 	@ApiImplicitParams(
 		{ @ApiImplicitParam(
+			name = "id",
 			value = "Id of requested order",
 			required = true
 		) }

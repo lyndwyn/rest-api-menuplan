@@ -23,7 +23,7 @@ public class Menu extends ExtendedEntity {
 	
 	@ApiModelProperty(required = true)
 	@Column(name = "type")
-	private int type;
+	private Integer type;
 	
 	@Column(name = "description")
 	private String description;
@@ -36,7 +36,7 @@ public class Menu extends ExtendedEntity {
 	 * @param type
 	 * @param description
 	 */
-	public Menu(String name, int type, String description) {
+	public Menu(String name, Integer type, String description) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -50,7 +50,7 @@ public class Menu extends ExtendedEntity {
 	 * @param type
 	 * @param description
 	 */
-	public Menu(Long id, String name, int type, String description) {
+	public Menu(Long id, String name, Integer type, String description) {
 		super(id);
 		this.name = name;
 		this.type = type;
@@ -77,7 +77,7 @@ public class Menu extends ExtendedEntity {
 	/**
 	 * @return the type
 	 */
-	public int getType() {
+	public Integer getType() {
 		return type;
 	}
 
@@ -85,7 +85,7 @@ public class Menu extends ExtendedEntity {
 	/**
 	 * @param type the type to set
 	 */
-	public void setType(int type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 

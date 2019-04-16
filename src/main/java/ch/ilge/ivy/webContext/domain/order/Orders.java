@@ -21,22 +21,22 @@ public class Orders extends ExtendedEntity {
 	
 	@ApiModelProperty(required = true)
 	@Column(name = "amount_normal")
-	private int amountNormal;
+	private Integer amountNormal;
 	
 	@ApiModelProperty(required = true)
 	@Column(name = "amount_nopork")
-	private int amountNopork;
+	private Integer amountNopork;
 	
 	@ApiModelProperty(required = true)
 	@Column(name = "amount_vegi")
-	private int amountVegi;
+	private Integer amountVegi;
 	
 	@Column(name = "notice")
 	private String notice;
 
 	public Orders() {}
 	
-	public Orders(int amountNormal, int amountNopork, int amountVegi, String notice) {
+	public Orders(Integer amountNormal, Integer amountNopork, Integer amountVegi, String notice) {
 		super();
 		this.amountNormal = amountNormal;
 		this.amountNopork = amountNopork;
@@ -44,7 +44,7 @@ public class Orders extends ExtendedEntity {
 		this.notice = notice;
 	}
 	
-	public Orders(Long id, int amountNormal, int amountNopork, int amountVegi, String notice) {
+	public Orders(Long id, Integer amountNormal, Integer amountNopork, Integer amountVegi, String notice) {
 		super(id);
 		this.amountNormal = amountNormal;
 		this.amountNopork = amountNopork;
@@ -56,7 +56,7 @@ public class Orders extends ExtendedEntity {
 	/**
 	 * @return the amountNormal
 	 */
-	public int getAmountNormal() {
+	public Integer getAmountNormal() {
 		return amountNormal;
 	}
 
@@ -64,7 +64,7 @@ public class Orders extends ExtendedEntity {
 	/**
 	 * @param amountNormal the amountNormal to set
 	 */
-	public void setAmountNormal(int amountNormal) {
+	public void setAmountNormal(Integer amountNormal) {
 		this.amountNormal = amountNormal;
 	}
 
@@ -72,7 +72,7 @@ public class Orders extends ExtendedEntity {
 	/**
 	 * @return the amountNopork
 	 */
-	public int getAmountNopork() {
+	public Integer getAmountNopork() {
 		return amountNopork;
 	}
 
@@ -80,7 +80,7 @@ public class Orders extends ExtendedEntity {
 	/**
 	 * @param amountNopork the amountNopork to set
 	 */
-	public void setAmountNopork(int amountNopork) {
+	public void setAmountNopork(Integer amountNopork) {
 		this.amountNopork = amountNopork;
 	}
 
@@ -88,7 +88,7 @@ public class Orders extends ExtendedEntity {
 	/**
 	 * @return the amountVegi
 	 */
-	public int getAmountVegi() {
+	public Integer getAmountVegi() {
 		return amountVegi;
 	}
 
@@ -96,7 +96,7 @@ public class Orders extends ExtendedEntity {
 	/**
 	 * @param amountVegi the amountVegi to set
 	 */
-	public void setAmountVegi(int amountVegi) {
+	public void setAmountVegi(Integer amountVegi) {
 		this.amountVegi = amountVegi;
 	}
 
