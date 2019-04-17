@@ -386,39 +386,49 @@ INSERT INTO public.menuplan(calendar_week) VALUES (
 /*
  * Create Order
  */
-INSERT INTO public.orders(amount_nopork, amount_normal, amount_vegi, notice) VALUES (
+INSERT INTO public.orders(amount_nopork, amount_normal, amount_vegi, notice, menuplan_id, users_id) VALUES (
 		0, 
 		0, 
 		4, 
-		'Am Mittwoch esse ich nicht in der Kantine.'
+		'Am Mittwoch esse ich nicht in der Kantine.',
+		3,
+		2
 	);
 	
-INSERT INTO public.orders(amount_nopork, amount_normal, amount_vegi, notice) VALUES (
+INSERT INTO public.orders(amount_nopork, amount_normal, amount_vegi, notice, menuplan_id, users_id) VALUES (
 		0, 
 		5, 
 		0, 
-		''
+		'',
+		1,
+		1
 	);	
 	
-INSERT INTO public.orders(amount_nopork, amount_normal, amount_vegi, notice) VALUES (
+INSERT INTO public.orders(amount_nopork, amount_normal, amount_vegi, notice, menuplan_id, users_id) VALUES (
 		3, 
 		0, 
 		0, 
-		'Donnerstags und Freitags bin ich nicht da.'
+		'Donnerstags und Freitags bin ich nicht da.',
+		2,
+		4
 	);	
 	
-INSERT INTO public.orders(amount_nopork, amount_normal, amount_vegi, notice) VALUES (
+INSERT INTO public.orders(amount_nopork, amount_normal, amount_vegi, notice, menuplan_id, users_id) VALUES (
 		5, 
 		10, 
 		5, 
-		'Drei Kinder und ein Betreuer. Fuer Xy bitte die Vegi-Mahlzeiten puerieren.'
+		'Drei Kinder und ein Betreuer. Fuer Xy bitte die Vegi-Mahlzeiten puerieren.',
+		1,
+		3
 	);		
 	
-INSERT INTO public.orders(amount_nopork, amount_normal, amount_vegi, notice) VALUES (
+INSERT INTO public.orders(amount_nopork, amount_normal, amount_vegi, notice, menuplan_id, users_id) VALUES (
 		0, 
 		8, 
 		0, 
-		'Ein Kind und ein Betreuer. Am Freitag sind wir nicht vorort.'
+		'Ein Kind und ein Betreuer. Am Freitag sind wir nicht vorort.',
+		2,
+		3
 	);	
 	
 	
@@ -745,83 +755,4 @@ INSERT INTO public.menuplan_menu(menuplan_id, menu_id) VALUES (
 		3, 
 		34
 	);
-	
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/*
- * Link Menuplan to Menuplan-Orders
- * 
- * 3 fully defined menuplans
- * 5 Orders
- */	
-/* Menuplan 1 - two orders */
-INSERT INTO public.menuplan_orders(menuplan_id, orders_id) VALUES (
-		1, 
-		5
-	);
-
-INSERT INTO public.menuplan_orders(menuplan_id, orders_id) VALUES (
-		1, 
-		2
-	);	
-
-/* Menuplan 2 - three orders */
-INSERT INTO public.menuplan_orders(menuplan_id, orders_id) VALUES (
-		2, 
-		1
-	);	
-
-/* Menuplan 3 - five orders*/
-	
-INSERT INTO public.menuplan_orders(menuplan_id, orders_id) VALUES (
-		3, 
-		3
-	);	
-	
-INSERT INTO public.menuplan_orders(menuplan_id, orders_id) VALUES (
-		3, 
-		4
-	);
-	
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/*
- * Link Orders to Users-Orders
- * 
- * Insgesamt 10 orders
- * Mp 1: 2
- * Mp 2: 3
- * Mp 3: 5
- * 
- * Insgesamt 4 users 
- * personal: 1, 
- * wohngruppe: 1, 
- * koch: 1, 
- * admin: 1)
- */	
-/* Menuplan 1 - two orders */
-INSERT INTO public.users_orders(user_id, orders_id)	VALUES (
-		1, 
-		2
-	);
-	
-INSERT INTO public.users_orders(user_id, orders_id)	VALUES (
-		2, 
-		1
-	);
-	
-/* Menuplan 2 - three orders */
-INSERT INTO public.users_orders(user_id, orders_id)	VALUES (
-		4, 
-		3
-	);
-	
-INSERT INTO public.users_orders(user_id, orders_id)	VALUES (
-		3, 
-		4
-	);
-	
-INSERT INTO public.users_orders(user_id, orders_id)	VALUES (
-		3, 
-		5
-	);
-
 	

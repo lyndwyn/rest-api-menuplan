@@ -5,7 +5,7 @@
 -- Dumped from database version 10.5
 -- Dumped by pg_dump version 10.5
 
--- Started on 2019-04-12 13:59:22
+-- Started on 2019-04-17 15:33:05
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -26,7 +26,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2907 (class 0 OID 0)
+-- TOC entry 2889 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -39,20 +39,20 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 197 (class 1259 OID 32088)
+-- TOC entry 197 (class 1259 OID 35361)
 -- Name: authority; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.authority (
     id bigint NOT NULL,
-    name character varying(50) NOT NULL
+    name character varying(255)
 );
 
 
 ALTER TABLE public.authority OWNER TO postgres;
 
 --
--- TOC entry 196 (class 1259 OID 32086)
+-- TOC entry 196 (class 1259 OID 35359)
 -- Name: authority_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -67,7 +67,7 @@ CREATE SEQUENCE public.authority_id_seq
 ALTER TABLE public.authority_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2908 (class 0 OID 0)
+-- TOC entry 2890 (class 0 OID 0)
 -- Dependencies: 196
 -- Name: authority_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -76,7 +76,7 @@ ALTER SEQUENCE public.authority_id_seq OWNED BY public.authority.id;
 
 
 --
--- TOC entry 198 (class 1259 OID 32094)
+-- TOC entry 198 (class 1259 OID 35367)
 -- Name: authority_role; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -89,22 +89,22 @@ CREATE TABLE public.authority_role (
 ALTER TABLE public.authority_role OWNER TO postgres;
 
 --
--- TOC entry 200 (class 1259 OID 32101)
+-- TOC entry 200 (class 1259 OID 35374)
 -- Name: menu; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.menu (
     id bigint NOT NULL,
-    description character varying(250),
-    name character varying(100) NOT NULL,
-    type smallint NOT NULL
+    description character varying(255),
+    name character varying(255),
+    type integer
 );
 
 
 ALTER TABLE public.menu OWNER TO postgres;
 
 --
--- TOC entry 199 (class 1259 OID 32099)
+-- TOC entry 199 (class 1259 OID 35372)
 -- Name: menu_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -119,7 +119,7 @@ CREATE SEQUENCE public.menu_id_seq
 ALTER TABLE public.menu_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2909 (class 0 OID 0)
+-- TOC entry 2891 (class 0 OID 0)
 -- Dependencies: 199
 -- Name: menu_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -128,20 +128,20 @@ ALTER SEQUENCE public.menu_id_seq OWNED BY public.menu.id;
 
 
 --
--- TOC entry 202 (class 1259 OID 32112)
+-- TOC entry 202 (class 1259 OID 35385)
 -- Name: menuplan; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.menuplan (
     id bigint NOT NULL,
-    calendar_week smallint
+    calendar_week integer
 );
 
 
 ALTER TABLE public.menuplan OWNER TO postgres;
 
 --
--- TOC entry 201 (class 1259 OID 32110)
+-- TOC entry 201 (class 1259 OID 35383)
 -- Name: menuplan_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -156,7 +156,7 @@ CREATE SEQUENCE public.menuplan_id_seq
 ALTER TABLE public.menuplan_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2910 (class 0 OID 0)
+-- TOC entry 2892 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: menuplan_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -165,7 +165,7 @@ ALTER SEQUENCE public.menuplan_id_seq OWNED BY public.menuplan.id;
 
 
 --
--- TOC entry 203 (class 1259 OID 32118)
+-- TOC entry 203 (class 1259 OID 35391)
 -- Name: menuplan_menu; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -178,36 +178,25 @@ CREATE TABLE public.menuplan_menu (
 ALTER TABLE public.menuplan_menu OWNER TO postgres;
 
 --
--- TOC entry 204 (class 1259 OID 32123)
--- Name: menuplan_orders; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.menuplan_orders (
-    menuplan_id bigint NOT NULL,
-    orders_id bigint NOT NULL
-);
-
-
-ALTER TABLE public.menuplan_orders OWNER TO postgres;
-
---
--- TOC entry 206 (class 1259 OID 32130)
+-- TOC entry 205 (class 1259 OID 35398)
 -- Name: orders; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.orders (
     id bigint NOT NULL,
-    amount_nopork smallint NOT NULL,
-    amount_normal smallint NOT NULL,
-    amount_vegi smallint NOT NULL,
-    notice character varying(250)
+    amount_nopork integer,
+    amount_normal integer,
+    amount_vegi integer,
+    notice character varying(255),
+    menuplan_id bigint,
+    users_id bigint
 );
 
 
 ALTER TABLE public.orders OWNER TO postgres;
 
 --
--- TOC entry 205 (class 1259 OID 32128)
+-- TOC entry 204 (class 1259 OID 35396)
 -- Name: orders_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -222,8 +211,8 @@ CREATE SEQUENCE public.orders_id_seq
 ALTER TABLE public.orders_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2911 (class 0 OID 0)
--- Dependencies: 205
+-- TOC entry 2893 (class 0 OID 0)
+-- Dependencies: 204
 -- Name: orders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -231,20 +220,20 @@ ALTER SEQUENCE public.orders_id_seq OWNED BY public.orders.id;
 
 
 --
--- TOC entry 208 (class 1259 OID 32138)
+-- TOC entry 207 (class 1259 OID 35406)
 -- Name: role; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.role (
     id bigint NOT NULL,
-    name character varying(50) NOT NULL
+    name character varying(255)
 );
 
 
 ALTER TABLE public.role OWNER TO postgres;
 
 --
--- TOC entry 207 (class 1259 OID 32136)
+-- TOC entry 206 (class 1259 OID 35404)
 -- Name: role_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -259,8 +248,8 @@ CREATE SEQUENCE public.role_id_seq
 ALTER TABLE public.role_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2912 (class 0 OID 0)
--- Dependencies: 207
+-- TOC entry 2894 (class 0 OID 0)
+-- Dependencies: 206
 -- Name: role_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -268,7 +257,7 @@ ALTER SEQUENCE public.role_id_seq OWNED BY public.role.id;
 
 
 --
--- TOC entry 210 (class 1259 OID 32146)
+-- TOC entry 209 (class 1259 OID 35414)
 -- Name: users; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -276,20 +265,20 @@ CREATE TABLE public.users (
     id bigint NOT NULL,
     account_expiration_date date,
     credentials_expiration_date date,
-    email character varying(75) NOT NULL,
-    enabled smallint NOT NULL,
-    first_name character varying(75) NOT NULL,
-    last_name character varying(60) NOT NULL,
-    living_goup smallint NOT NULL,
-    locked smallint NOT NULL,
-    password character varying(100) NOT NULL
+    email character varying(255),
+    enabled integer,
+    first_name character varying(255),
+    last_name character varying(255),
+    living_goup integer,
+    locked integer,
+    password character varying(255)
 );
 
 
 ALTER TABLE public.users OWNER TO postgres;
 
 --
--- TOC entry 209 (class 1259 OID 32144)
+-- TOC entry 208 (class 1259 OID 35412)
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -304,8 +293,8 @@ CREATE SEQUENCE public.users_id_seq
 ALTER TABLE public.users_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2913 (class 0 OID 0)
--- Dependencies: 209
+-- TOC entry 2895 (class 0 OID 0)
+-- Dependencies: 208
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -313,20 +302,7 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- TOC entry 211 (class 1259 OID 32155)
--- Name: users_orders; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.users_orders (
-    user_id bigint NOT NULL,
-    orders_id bigint NOT NULL
-);
-
-
-ALTER TABLE public.users_orders OWNER TO postgres;
-
---
--- TOC entry 212 (class 1259 OID 32160)
+-- TOC entry 210 (class 1259 OID 35423)
 -- Name: users_role; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -339,7 +315,7 @@ CREATE TABLE public.users_role (
 ALTER TABLE public.users_role OWNER TO postgres;
 
 --
--- TOC entry 2720 (class 2604 OID 32091)
+-- TOC entry 2714 (class 2604 OID 35364)
 -- Name: authority id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -347,7 +323,7 @@ ALTER TABLE ONLY public.authority ALTER COLUMN id SET DEFAULT nextval('public.au
 
 
 --
--- TOC entry 2721 (class 2604 OID 32104)
+-- TOC entry 2715 (class 2604 OID 35377)
 -- Name: menu id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -355,7 +331,7 @@ ALTER TABLE ONLY public.menu ALTER COLUMN id SET DEFAULT nextval('public.menu_id
 
 
 --
--- TOC entry 2722 (class 2604 OID 32115)
+-- TOC entry 2716 (class 2604 OID 35388)
 -- Name: menuplan id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -363,7 +339,7 @@ ALTER TABLE ONLY public.menuplan ALTER COLUMN id SET DEFAULT nextval('public.men
 
 
 --
--- TOC entry 2723 (class 2604 OID 32133)
+-- TOC entry 2717 (class 2604 OID 35401)
 -- Name: orders id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -371,7 +347,7 @@ ALTER TABLE ONLY public.orders ALTER COLUMN id SET DEFAULT nextval('public.order
 
 
 --
--- TOC entry 2724 (class 2604 OID 32141)
+-- TOC entry 2718 (class 2604 OID 35409)
 -- Name: role id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -379,69 +355,14 @@ ALTER TABLE ONLY public.role ALTER COLUMN id SET DEFAULT nextval('public.role_id
 
 
 --
--- TOC entry 2725 (class 2604 OID 32149)
+-- TOC entry 2719 (class 2604 OID 35417)
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
 
-
 --
--- TOC entry 2914 (class 0 OID 0)
--- Dependencies: 196
--- Name: authority_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.authority_id_seq', 1, false);
-
-
---
--- TOC entry 2915 (class 0 OID 0)
--- Dependencies: 199
--- Name: menu_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.menu_id_seq', 1, false);
-
-
---
--- TOC entry 2916 (class 0 OID 0)
--- Dependencies: 201
--- Name: menuplan_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.menuplan_id_seq', 1, false);
-
-
---
--- TOC entry 2917 (class 0 OID 0)
--- Dependencies: 205
--- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.orders_id_seq', 1, false);
-
-
---
--- TOC entry 2918 (class 0 OID 0)
--- Dependencies: 207
--- Name: role_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.role_id_seq', 1, false);
-
-
---
--- TOC entry 2919 (class 0 OID 0)
--- Dependencies: 209
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.users_id_seq', 1, false);
-
-
---
--- TOC entry 2727 (class 2606 OID 32093)
+-- TOC entry 2721 (class 2606 OID 35366)
 -- Name: authority authority_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -450,7 +371,7 @@ ALTER TABLE ONLY public.authority
 
 
 --
--- TOC entry 2729 (class 2606 OID 32098)
+-- TOC entry 2723 (class 2606 OID 35371)
 -- Name: authority_role authority_role_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -459,7 +380,7 @@ ALTER TABLE ONLY public.authority_role
 
 
 --
--- TOC entry 2731 (class 2606 OID 32109)
+-- TOC entry 2725 (class 2606 OID 35382)
 -- Name: menu menu_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -468,7 +389,7 @@ ALTER TABLE ONLY public.menu
 
 
 --
--- TOC entry 2735 (class 2606 OID 32122)
+-- TOC entry 2729 (class 2606 OID 35395)
 -- Name: menuplan_menu menuplan_menu_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -477,16 +398,7 @@ ALTER TABLE ONLY public.menuplan_menu
 
 
 --
--- TOC entry 2737 (class 2606 OID 32127)
--- Name: menuplan_orders menuplan_orders_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.menuplan_orders
-    ADD CONSTRAINT menuplan_orders_pkey PRIMARY KEY (menuplan_id, orders_id);
-
-
---
--- TOC entry 2733 (class 2606 OID 32117)
+-- TOC entry 2727 (class 2606 OID 35390)
 -- Name: menuplan menuplan_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -495,7 +407,7 @@ ALTER TABLE ONLY public.menuplan
 
 
 --
--- TOC entry 2741 (class 2606 OID 32135)
+-- TOC entry 2731 (class 2606 OID 35403)
 -- Name: orders orders_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -504,7 +416,7 @@ ALTER TABLE ONLY public.orders
 
 
 --
--- TOC entry 2743 (class 2606 OID 32143)
+-- TOC entry 2733 (class 2606 OID 35411)
 -- Name: role role_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -513,34 +425,7 @@ ALTER TABLE ONLY public.role
 
 
 --
--- TOC entry 2747 (class 2606 OID 32168)
--- Name: users_orders uk_1njdfitph68mh7p7c6f3qc736; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.users_orders
-    ADD CONSTRAINT uk_1njdfitph68mh7p7c6f3qc736 UNIQUE (orders_id);
-
-
---
--- TOC entry 2739 (class 2606 OID 32166)
--- Name: menuplan_orders uk_m3kqq9x5k3pe08q5xjm5failq; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.menuplan_orders
-    ADD CONSTRAINT uk_m3kqq9x5k3pe08q5xjm5failq UNIQUE (orders_id);
-
-
---
--- TOC entry 2749 (class 2606 OID 32159)
--- Name: users_orders users_orders_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.users_orders
-    ADD CONSTRAINT users_orders_pkey PRIMARY KEY (user_id, orders_id);
-
-
---
--- TOC entry 2745 (class 2606 OID 32154)
+-- TOC entry 2735 (class 2606 OID 35422)
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -549,7 +434,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 2751 (class 2606 OID 32164)
+-- TOC entry 2737 (class 2606 OID 35427)
 -- Name: users_role users_role_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -558,16 +443,16 @@ ALTER TABLE ONLY public.users_role
 
 
 --
--- TOC entry 2758 (class 2606 OID 32199)
--- Name: users_orders fk2lnf5jw8p8q0ytkr8dp0mlx6; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2742 (class 2606 OID 35448)
+-- Name: orders fk1gdt2i664rnli1u00rriqrale; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.users_orders
-    ADD CONSTRAINT fk2lnf5jw8p8q0ytkr8dp0mlx6 FOREIGN KEY (orders_id) REFERENCES public.orders(id);
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT fk1gdt2i664rnli1u00rriqrale FOREIGN KEY (menuplan_id) REFERENCES public.menuplan(id);
 
 
 --
--- TOC entry 2760 (class 2606 OID 32209)
+-- TOC entry 2744 (class 2606 OID 35458)
 -- Name: users_role fk3qjq7qsiigxa82jgk0i0wuq3g; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -576,7 +461,7 @@ ALTER TABLE ONLY public.users_role
 
 
 --
--- TOC entry 2753 (class 2606 OID 32174)
+-- TOC entry 2739 (class 2606 OID 35433)
 -- Name: authority_role fk41x42ehd4xi15gxvg9iehmel5; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -585,7 +470,7 @@ ALTER TABLE ONLY public.authority_role
 
 
 --
--- TOC entry 2752 (class 2606 OID 32169)
+-- TOC entry 2738 (class 2606 OID 35428)
 -- Name: authority_role fkbx74hejmy633p202glaq0yj8t; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -594,7 +479,7 @@ ALTER TABLE ONLY public.authority_role
 
 
 --
--- TOC entry 2755 (class 2606 OID 32184)
+-- TOC entry 2741 (class 2606 OID 35443)
 -- Name: menuplan_menu fkcl2pgcpb36vpsccn4s1lyhinp; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -603,16 +488,16 @@ ALTER TABLE ONLY public.menuplan_menu
 
 
 --
--- TOC entry 2757 (class 2606 OID 32194)
--- Name: menuplan_orders fkf9ksdoxc6q3y3vvcxjuwbequd; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2743 (class 2606 OID 35453)
+-- Name: orders fke6k45xxoin4fylnwg2jkehwjf; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.menuplan_orders
-    ADD CONSTRAINT fkf9ksdoxc6q3y3vvcxjuwbequd FOREIGN KEY (menuplan_id) REFERENCES public.menuplan(id);
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT fke6k45xxoin4fylnwg2jkehwjf FOREIGN KEY (users_id) REFERENCES public.users(id);
 
 
 --
--- TOC entry 2754 (class 2606 OID 32179)
+-- TOC entry 2740 (class 2606 OID 35438)
 -- Name: menuplan_menu fki1cfk27qo3d4puc25enuora5b; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -621,7 +506,7 @@ ALTER TABLE ONLY public.menuplan_menu
 
 
 --
--- TOC entry 2761 (class 2606 OID 32214)
+-- TOC entry 2745 (class 2606 OID 35463)
 -- Name: users_role fkiu0xsee0dmwa28nffgyf4bcvc; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -629,25 +514,7 @@ ALTER TABLE ONLY public.users_role
     ADD CONSTRAINT fkiu0xsee0dmwa28nffgyf4bcvc FOREIGN KEY (users_id) REFERENCES public.users(id);
 
 
---
--- TOC entry 2759 (class 2606 OID 32204)
--- Name: users_orders fkms88pdhtsiuuusjpeij73f6df; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.users_orders
-    ADD CONSTRAINT fkms88pdhtsiuuusjpeij73f6df FOREIGN KEY (user_id) REFERENCES public.users(id);
-
-
---
--- TOC entry 2756 (class 2606 OID 32189)
--- Name: menuplan_orders fku903hym0q2at52wx8n8c27d2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.menuplan_orders
-    ADD CONSTRAINT fku903hym0q2at52wx8n8c27d2 FOREIGN KEY (orders_id) REFERENCES public.orders(id);
-
-
--- Completed on 2019-04-12 13:59:23
+-- Completed on 2019-04-17 15:33:05
 
 --
 -- PostgreSQL database dump complete
