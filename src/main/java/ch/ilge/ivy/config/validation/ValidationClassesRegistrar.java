@@ -46,7 +46,10 @@ public class ValidationClassesRegistrar implements ApplicationRunner {
 		// find classes annotated with @Validation
 		List<Class<?>> validationClasses = findClasses(BASE_PACKAGE, metadataReader -> {
 			try {
-				return metadataReader.getAnnotationMetadata().hasAnnotation(Validations.class.getName());
+				var found = false;
+				found |= metadataReader.getAnnotationMetadata().hasAnnotation(Validation.class.getName());
+				found |= metadataReader.getAnnotationMetadata().hasAnnotation(Validations.class.getName());
+				return found;
 			} catch (Throwable e) {}
 			
 			return false;
@@ -59,6 +62,9 @@ public class ValidationClassesRegistrar implements ApplicationRunner {
 				for (Validation validation : validations.value()) {
 					validationRegistry.register(validationClass, validation);
 				}
+			} else {
+				Validation validation = validationClass.getAnnotation(Validation.class);
+				validationRegistry.register(validationClass, validation);
 			}
 		}
 	}

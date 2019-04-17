@@ -90,10 +90,9 @@ public class OrderValidation extends ExtendedValidation {
 	 * @param  value Value from the field which gets validated.
 	 * @return       boolean If validation is successful or not.
 	 */
-	@ValidateField("description")
+	@ValidateField("notice")
 	public void validateDescription(Errors errors, String field, String value) {
 		validateStringLength(errors, field, value, 0, 250, "order-notice");
-		validateAlphanumeric(errors, field, value);
 	}
 	
 }

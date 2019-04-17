@@ -5,8 +5,7 @@ import java.beans.Introspector;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
 import ch.ilge.ivy.config.validation.annotation.ValidateField;
 import ch.ilge.ivy.config.validation.annotation.ValidateFields;
@@ -33,7 +32,7 @@ public class ValidationClassSkeleton {
 	
 	private List<FieldGetter> fieldDelegations;
 	
-	public ValidationClassSkeleton(Class<?> validationClass, Validation annotation, Logger logger)
+	public ValidationClassSkeleton(Class<?> validationClass, Validation annotation, Consumer<String> logger)
 			throws IllegalArgumentException, IntrospectionException {
 		// initialize members
 		this.validationClass = validationClass;
@@ -71,7 +70,7 @@ public class ValidationClassSkeleton {
 				if (fieldGetter != null) {
 					this.singleFieldValidations.add(new Pair<>(fieldGetter, fieldValidation));
 				} else {
-					logger.warn(String.format(
+					logger.accept(String.format(
 							"@ValidateFields of validation method '%s' declared in class '%s' specifies unknown field '%s' for entity '%s'",
 							method.getName(), validationClass.getName(), fieldName, entityClass.getName()));
 				}
@@ -90,7 +89,7 @@ public class ValidationClassSkeleton {
 					if (fieldGetter != null) {
 						fieldGetters.add(fieldGetter);
 					} else { // an unknown field was specified
-						logger.warn(String.format(
+						logger.accept(String.format(
 								"@ValidateFields of validation method '%s' declared in class '%s' specifies unknown field '%s' for entity '%s'",
 								method.getName(), validationClass.getName(), fieldName, entityClass.getName()));
 						continue outer; // skip this method
@@ -109,7 +108,7 @@ public class ValidationClassSkeleton {
 			if (fieldGetter != null) {
 				this.fieldDelegations.add(fieldGetter);
 			} else {
-				logger.warn(String.format(
+				logger.accept(String.format(
 						"@Validation of class '%s' specifies unknown field '%s' as field delegation for entity '%s'",
 						validationClass.getName(), delegation, entityClass.getName()));
 			}

@@ -3,8 +3,10 @@ package ch.ilge.ivy.config.validation;
 import java.beans.IntrospectionException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 
 import org.slf4j.Logger;
+import org.slf4j.Marker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
@@ -67,9 +69,12 @@ public class ValidationRegistry {
 	
 	public void register(Class<?> validationClass, Validation annotation) {
 		Class<?> entityClass = annotation.value();
-		
 		try {
-			classSkeletons.put(entityClass, new ValidationClassSkeleton(validationClass, annotation, logger));
+			Consumer<String> consumer = System.err::println;
+			if (logger != null) {
+				consumer = logger::warn;
+			} 
+			classSkeletons.put(entityClass, new ValidationClassSkeleton(validationClass, annotation, consumer));
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 			return;

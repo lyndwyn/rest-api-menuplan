@@ -6,6 +6,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.stereotype.Component;
+
 /** TODO
  * This annotation is used for map a validation-class to its entity-class.
  * 
@@ -14,6 +16,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Repeatable(value = Validations.class)
+@Component
 public @interface Validation {
 	/**
 	 * The entity class this Validation can validate
