@@ -2,9 +2,11 @@ package ch.ilge.ivy.webContext.domain.order;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import ch.ilge.ivy.config.generic.ExtendedEntity;
+import ch.ilge.ivy.webContext.domain.menuplan.Menuplan;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -33,23 +35,45 @@ public class Orders extends ExtendedEntity {
 	
 	@Column(name = "notice")
 	private String notice;
+	
+	@ManyToOne
+	private Menuplan menuplan;
 
 	public Orders() {}
-	
-	public Orders(Integer amountNormal, Integer amountNopork, Integer amountVegi, String notice) {
+
+	/**
+	 * 
+	 * @param amountNormal
+	 * @param amountNopork
+	 * @param amountVegi
+	 * @param notice
+	 * @param menuplan
+	 */
+	public Orders(Integer amountNormal, Integer amountNopork, Integer amountVegi, String notice, Menuplan menuplan) {
 		super();
 		this.amountNormal = amountNormal;
 		this.amountNopork = amountNopork;
 		this.amountVegi = amountVegi;
 		this.notice = notice;
+		this.menuplan = menuplan;
 	}
 	
-	public Orders(Long id, Integer amountNormal, Integer amountNopork, Integer amountVegi, String notice) {
+	/**
+	 * 
+	 * @param id
+	 * @param amountNormal
+	 * @param amountNopork
+	 * @param amountVegi
+	 * @param notice
+	 * @param menuplan
+	 */
+	public Orders(Long id, Integer amountNormal, Integer amountNopork, Integer amountVegi, String notice, Menuplan menuplan) {
 		super(id);
 		this.amountNormal = amountNormal;
 		this.amountNopork = amountNopork;
 		this.amountVegi = amountVegi;
 		this.notice = notice;
+		this.menuplan = menuplan;
 	}
 
 	
@@ -114,6 +138,22 @@ public class Orders extends ExtendedEntity {
 	 */
 	public void setNotice(String notice) {
 		this.notice = notice;
+	}
+
+	
+	/**
+	 * @return the menuplan
+	 */
+	public Menuplan getMenuplan() {
+		return menuplan;
+	}
+
+	
+	/**
+	 * @param menuplan the menuplan to set
+	 */
+	public void setMenuplan(Menuplan menuplan) {
+		this.menuplan = menuplan;
 	}
 	
 }

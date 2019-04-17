@@ -18,6 +18,8 @@ public class OrderDTO extends ExtendedDTO {
 	
 	private String notice;
 	
+	private ExtendedDTO menuplan;
+	
 	public OrderDTO() {}
 
 	/**
@@ -26,13 +28,15 @@ public class OrderDTO extends ExtendedDTO {
 	 * @param amountNopork
 	 * @param amountVegi
 	 * @param notice
+	 * @param menuplan
 	 */
-	public OrderDTO(Integer amountNormal, Integer amountNopork, Integer amountVegi, String notice) {
+	public OrderDTO(Integer amountNormal, Integer amountNopork, Integer amountVegi, String notice, ExtendedDTO menuplan) {
 		super();
 		this.amountNormal = amountNormal;
 		this.amountNopork = amountNopork;
 		this.amountVegi = amountVegi;
 		this.notice = notice;
+		this.menuplan = menuplan;
 	}
 	
 	/**
@@ -42,13 +46,15 @@ public class OrderDTO extends ExtendedDTO {
 	 * @param amountNopork
 	 * @param amountVegi
 	 * @param notice
+	 * @param menuplan
 	 */
-	public OrderDTO(Long id, Integer amountNormal, Integer amountNopork, Integer amountVegi, String notice) {
+	public OrderDTO(Long id, Integer amountNormal, Integer amountNopork, Integer amountVegi, String notice, ExtendedDTO menuplan) {
 		super(id);
 		this.amountNormal = amountNormal;
 		this.amountNopork = amountNopork;
 		this.amountVegi = amountVegi;
 		this.notice = notice;
+		this.menuplan = menuplan;
 	}
 
 	
@@ -114,5 +120,22 @@ public class OrderDTO extends ExtendedDTO {
 	public void setNotice(String notice) {
 		this.notice = notice;
 	}
+
+	
+	/**
+	 * @return the menuplan
+	 */
+	public ExtendedDTO getMenuplan() {
+		return menuplan;
+	}
+
+	
+	/**
+	 * @param menuplan the menuplan to set
+	 */
+	public void setMenuplan(ExtendedDTO menuplan) {
+		this.menuplan = menuplan;
+	}
+
 	
 }

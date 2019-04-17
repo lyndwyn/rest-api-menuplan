@@ -5,7 +5,8 @@ import java.util.Set;
 
 import ch.ilge.ivy.config.generic.ExtendedDTO;
 import ch.ilge.ivy.webContext.domain.order.Orders;
-import ch.ilge.ivy.webContext.domain.role.Role;
+import ch.ilge.ivy.webContext.domain.order.dto.OrderDTO;
+import ch.ilge.ivy.webContext.domain.role.dto.RoleDTO;
 
 /**
  * DTO for the Entity Users.
@@ -33,9 +34,9 @@ public class UserDTO extends ExtendedDTO {
 	
 	private Boolean livingGroup;
 	
-	private Set<Role> roles;
+	private Set<RoleDTO> roles;
 	
-	private Set<Orders> orders;
+	private Set<OrderDTO> orders;
 	
 	/**
 	 * 
@@ -59,8 +60,8 @@ public class UserDTO extends ExtendedDTO {
 	 * @param orders
 	 */
 	public UserDTO(String email, String password, String firstName, String lastName, LocalDate accountExpirationDate,
-			LocalDate credentialsExpirationDate, Boolean locked, Boolean enabled, Boolean livingGroup, Set<Role> roles,
-			Set<Orders> orders) {
+			LocalDate credentialsExpirationDate, Boolean locked, Boolean enabled, Boolean livingGroup, Set<RoleDTO> roles,
+			Set<OrderDTO> orders) {
 		super();
 		this.email = email;
 		this.password = password;
@@ -91,8 +92,8 @@ public class UserDTO extends ExtendedDTO {
 	 * @param orders
 	 */
 	public UserDTO(Long id, String email, String password, String firstName, String lastName, LocalDate accountExpirationDate,
-			LocalDate credentialsExpirationDate, Boolean locked, Boolean enabled, Boolean livingGroup, Set<Role> roles,
-			Set<Orders> orders) {
+			LocalDate credentialsExpirationDate, Boolean locked, Boolean enabled, Boolean livingGroup, Set<RoleDTO> roles,
+			Set<OrderDTO> orders) {
 		super(id);
 		this.email = email;
 		this.password = password;
@@ -255,7 +256,7 @@ public class UserDTO extends ExtendedDTO {
 	/**
 	 * @return the roles
 	 */
-	public Set<Role> getRoles() {
+	public Set<RoleDTO> getRoles() {
 		return roles;
 	}
 
@@ -263,7 +264,7 @@ public class UserDTO extends ExtendedDTO {
 	/**
 	 * @param roles the roles to set
 	 */
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(Set<RoleDTO> roles) {
 		this.roles = roles;
 	}
 
@@ -271,7 +272,7 @@ public class UserDTO extends ExtendedDTO {
 	/**
 	 * @return the orders
 	 */
-	public Set<Orders> getOrders() {
+	public Set<OrderDTO> getOrders() {
 		return orders;
 	}
 
@@ -279,7 +280,7 @@ public class UserDTO extends ExtendedDTO {
 	/**
 	 * @param orders the orders to set
 	 */
-	public void setOrders(Set<Orders> orders) {
+	public void setOrders(Set<OrderDTO> orders) {
 		this.orders = orders;
 	}
 	

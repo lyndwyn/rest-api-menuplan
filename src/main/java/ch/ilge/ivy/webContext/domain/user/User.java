@@ -85,9 +85,10 @@ public class User extends ExtendedEntity {
 	private Set<Role> roles;
 	
 	@OneToMany(
-			cascade = CascadeType.ALL,
-			fetch = FetchType.LAZY
+			cascade = CascadeType.REMOVE,
+			fetch = FetchType.EAGER
 		)
+	@JoinColumn(name = "users_id")
 	private Set<Orders> orders;
 	
 	

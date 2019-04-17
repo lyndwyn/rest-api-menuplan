@@ -28,5 +28,7 @@ public interface UserService extends UserDetailsService, ExtendedService<User> {
 	 * @param name Descriptive name of User
 	 */
 	void deleteByEmail(String name);
+
+	User getPrincipal();
 	
 }

@@ -21,7 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ch.ilge.ivy.config.generic.ExtendedDTO;
 import ch.ilge.ivy.config.validation.GenericValidator;
+import ch.ilge.ivy.webContext.domain.order.Orders;
+import ch.ilge.ivy.webContext.domain.order.dto.OrderDTO;
 import ch.ilge.ivy.webContext.domain.user.dto.UserDTO;
 import ch.ilge.ivy.webContext.domain.user.dto.UserMapper;
 import io.swagger.annotations.Api;

@@ -41,6 +41,7 @@ public class Menuplan extends ExtendedEntity {
 			cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY
 		)
+	@JoinColumn(name = "menuplan_id")
 	private Set<Orders> orders;
 	
 	public Menuplan() {}

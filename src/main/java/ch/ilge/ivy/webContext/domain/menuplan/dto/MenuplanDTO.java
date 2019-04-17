@@ -3,8 +3,7 @@ package ch.ilge.ivy.webContext.domain.menuplan.dto;
 import java.util.Set;
 
 import ch.ilge.ivy.config.generic.ExtendedDTO;
-import ch.ilge.ivy.webContext.domain.menu.Menu;
-import ch.ilge.ivy.webContext.domain.order.Orders;
+import ch.ilge.ivy.webContext.domain.menu.dto.MenuDTO;
 
 /**
  * DTO for the Entity Menuplan.
@@ -16,9 +15,9 @@ public class MenuplanDTO extends ExtendedDTO {
 
 	private Integer calendarWeek;
 	
-	private Set<Menu> menus;
+	private Set<MenuDTO> menus;
 	
-	private Set<Orders> orders;
+	private Set<ExtendedDTO> orders;
 	
 	public MenuplanDTO() {}
 
@@ -28,7 +27,7 @@ public class MenuplanDTO extends ExtendedDTO {
 	 * @param menus
 	 * @param orders
 	 */
-	public MenuplanDTO(Integer calendarWeek, Set<Menu> menus, Set<Orders> orders) {
+	public MenuplanDTO(Integer calendarWeek, Set<MenuDTO> menus, Set<ExtendedDTO> orders) {
 		super();
 		this.calendarWeek = calendarWeek;
 		this.menus = menus;
@@ -42,7 +41,7 @@ public class MenuplanDTO extends ExtendedDTO {
 	 * @param menus
 	 * @param orders
 	 */
-	public MenuplanDTO(Long id, Integer calendarWeek, Set<Menu> menus, Set<Orders> orders) {
+	public MenuplanDTO(Long id, Integer calendarWeek, Set<MenuDTO> menus, Set<ExtendedDTO> orders) {
 		super(id);
 		this.calendarWeek = calendarWeek;
 		this.menus = menus;
@@ -66,28 +65,28 @@ public class MenuplanDTO extends ExtendedDTO {
 	/**
 	 * @return the menus
 	 */
-	public Set<Menu> getMenus() {
+	public Set<MenuDTO> getMenus() {
 		return menus;
 	}
 
 	/**
 	 * @param menus the menus to set
 	 */
-	public void setMenus(Set<Menu> menus) {
+	public void setMenus(Set<MenuDTO> menus) {
 		this.menus = menus;
 	}
 
 	/**
 	 * @return the orders
 	 */
-	public Set<Orders> getOrders() {
+	public Set<ExtendedDTO> getOrders() {
 		return orders;
 	}
 
 	/**
 	 * @param orders the orders to set
 	 */
-	public void setOrders(Set<Orders> orders) {
+	public void setOrders(Set<ExtendedDTO> orders) {
 		this.orders = orders;
 	}
 	

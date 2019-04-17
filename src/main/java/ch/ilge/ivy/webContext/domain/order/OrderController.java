@@ -1,5 +1,6 @@
 package ch.ilge.ivy.webContext.domain.order;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -24,6 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ch.ilge.ivy.config.validation.GenericValidator;
 import ch.ilge.ivy.webContext.domain.order.dto.OrderDTO;
 import ch.ilge.ivy.webContext.domain.order.dto.OrderMapper;
+import ch.ilge.ivy.webContext.domain.user.User;
+import ch.ilge.ivy.webContext.domain.user.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -57,6 +60,8 @@ public class OrderController {
 
 	private OrderService orderService;
 	
+	private UserService userService;
+	
 	private OrderMapper orderMapper;
 	
 	private GenericValidator genericValidator;
@@ -73,8 +78,9 @@ public class OrderController {
 	 * @param genericValidator
 	 */
 	@Autowired
-	public OrderController(OrderService orderService, OrderMapper orderMapper, GenericValidator genericValidator) {
+	public OrderController(OrderService orderService, UserService userService, OrderMapper orderMapper, GenericValidator genericValidator) {
 		this.orderService = orderService;
+		this.userService = userService;
 		this.orderMapper = orderMapper;
 		this.genericValidator = genericValidator;
 	}
@@ -128,6 +134,7 @@ public class OrderController {
 	@GetMapping({ "", "/" })
 	public @ResponseBody ResponseEntity<Iterable<OrderDTO>> getAll() {
 		List<Orders> orders = orderService.findAll();
+		
 		return new ResponseEntity<>(orderMapper.toDTOs(orders), HttpStatus.OK);
 	}
 	
@@ -149,13 +156,21 @@ public class OrderController {
 	)
 	@PostMapping({ "", "/" })
 	public ResponseEntity<OrderDTO> create(@Valid @RequestBody OrderDTO orderDTO) {
-		// ensure orderID is null
-		orderDTO.setId(null);
+		User currentUser = userService.getPrincipal();
 		
-		// save order
-		Orders order = orderMapper.fromDTO(orderDTO);
-		orderService.save(order);
-		return new ResponseEntity<>(orderMapper.toDTO(order), HttpStatus.CREATED);
+		if (!orderService.userHasOrderThisWeek(currentUser)) {
+			// ensure orderID is null
+			orderDTO.setId(null);
+			
+			// save order
+			Orders order = orderMapper.fromDTO(orderDTO);
+			orderService.save(order);
+			orderService.assignCurrentUser(order);
+			
+			return new ResponseEntity<>(orderMapper.toDTO(order), HttpStatus.CREATED);
+		} else {
+			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+		}
 	}
 	
 	/**
@@ -210,6 +225,27 @@ public class OrderController {
 	public ResponseEntity<Void> deleteById(@PathVariable Long id) {
 		orderService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+	
+	
+	@GetMapping({ "fun" })
+	public ResponseEntity<Void> funnyFunFun() {
+		/*
+		User user = userService.findByEmail(orderService.tescht());
+		
+		List<Orders> orders = new ArrayList<>(user.getOrders());
+		List<Long> orderIds = new ArrayList<>();
+		
+		for(int i = 0; i < orders.size(); i++) {
+			orderIds.add(orders.get(i).getId());
+		}
+		
+		Boolean b = orderService.hasOrderThisWeek(orderIds);
+		
+		System.out.println("+++HERE answer: "+ b.toString());
+		*/
+		
+		return new ResponseEntity<>( HttpStatus.OK);
 	}
 
 }
