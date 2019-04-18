@@ -226,7 +226,7 @@ INSERT INTO public.menu(description, name, type) VALUES (
 	
 INSERT INTO public.menu(description, name, type) VALUES (
 		'Kann Getreide, Milch und Eier enthalten.', 
-		'Pizza Margaritha, Blattsalat', 
+		'Pizza Margherita, Blattsalat', 
 		1
 	);	
 	

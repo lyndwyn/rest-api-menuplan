@@ -63,6 +63,12 @@ public class Role extends ExtendedEntity {
 		this.name = name;
 		this.authorities = authorities;
 	}
+	
+	public Role(Long id, String name, Set<Authority> authorities) {
+		super(id);
+		this.name = name;
+		this.authorities = authorities;
+	}
 
 	/**
 	 * @return the name

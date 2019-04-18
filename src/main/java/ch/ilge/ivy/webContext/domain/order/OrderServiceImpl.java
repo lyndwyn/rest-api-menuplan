@@ -64,7 +64,7 @@ public class OrderServiceImpl extends ExtendedServiceImpl<Orders> implements Ord
 	}
 	
 	/**
-	 * This method adds an order to legged in users
+	 * This method adds an order to logged in users
 	 * 
 	 * @param order	The order to add
 	 */
