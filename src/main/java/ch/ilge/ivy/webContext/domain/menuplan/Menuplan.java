@@ -19,7 +19,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * This class is the Entity Menuplan. A Menuplan can hold multiple menus.
+ * This class is the Entity Menuplan. A Menuplan can hold multiple menus and 
+ * have multiple orders from different users.
  * 
  * @author Laura Steiner
  */
@@ -34,7 +35,9 @@ public class Menuplan extends ExtendedEntity {
 	
 	@ApiModelProperty(required = true)
 	@ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinTable(name = "menuplan_menu", joinColumns = @JoinColumn(name = "menuplan_id"), inverseJoinColumns = @JoinColumn(name = "menu_id"))
+	@JoinTable(name = "menuplan_menu", 
+				joinColumns = @JoinColumn(name = "menuplan_id"), 
+				inverseJoinColumns = @JoinColumn(name = "menu_id"))
 	private Set<Menu> menus;
 	
 	@OneToMany(

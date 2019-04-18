@@ -1,5 +1,6 @@
 package ch.ilge.ivy.webContext.domain.order;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -36,7 +37,7 @@ public class Orders extends ExtendedEntity {
 	@Column(name = "notice")
 	private String notice;
 	
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	private Menuplan menuplan;
 
 	public Orders() {}

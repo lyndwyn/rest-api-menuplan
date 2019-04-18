@@ -16,12 +16,14 @@ import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
 /**
- * TODO
+ * This extended ServiceImplTest tests the basic crud-logic.
+ * Once the given Entity exists, in the other the entity doesn't exists.
+ * 
  * @author Laura Steiner
  *
- * @param <S>
- * @param <E>
- * @param <R>
+ * @param <S>	Sextends ExtendedServiceImpl<E>
+ * @param <E>	E extends ExtendedEntity
+ * @param <R>	R extends ExtendedJpaRepository<E>
  */ 
 @RunWith(MockitoJUnitRunner.class)
 public class ExtendedServiceImplTest<S extends ExtendedServiceImpl<E>, E extends ExtendedEntity, R extends ExtendedJpaRepository<E>> {
@@ -106,8 +108,8 @@ public class ExtendedServiceImplTest<S extends ExtendedServiceImpl<E>, E extends
 
 		assertEquals(Optional.of(objectToFind), service.findById(idToFid));
 	}
-		 //NullPointerException.class TODO?
-	@Test//(expected =  NoSuchElementException.class)
+		 
+	@Test
 	public void findById_givenIdDoesNotExist_throwsNoSuchElementException() {
 		E objectToFind = entitiesToMock.get(0);
 		long idToFid = objectToFind.getId();

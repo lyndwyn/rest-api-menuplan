@@ -36,7 +36,7 @@ public class MenuplanValidation extends ExtendedValidation {
 	 * @return       boolean If validation is successful or not.
 	 */
 	@ValidateField("calendarWeek")
-	public void validateEmploymentLevel(Errors errors, String field, Integer value) {
+	public void calendarWeek(Errors errors, String field, Integer value) {
 		if (value < 0 || value > 52) {
 			errors.rejectValue(field, messageReader.getStringProperty("menuplan-calendar-week"));
 		}

@@ -6,6 +6,9 @@ import ch.ilge.ivy.config.generic.ExtendedDTO;
 import ch.ilge.ivy.webContext.domain.menu.dto.MenuDTO;
 
 /**
+ * This class is the Entity Menuplan. A Menuplan can hold multiple menus and 
+ * have multiple orders from different users.
+ * 
  * DTO for the Entity Menuplan.
  * 
  * @author Laura Steiner
