@@ -3,8 +3,10 @@ package ch.ilge.ivy.webContext.domain.user;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Before;
@@ -26,6 +28,7 @@ import ch.ilge.ivy.webContext.domain.role.Role;
 
 
 /**
+ * This is the JUnit-Test for the repository User.
  * 
  * @author Laura Steiner
  *
@@ -62,7 +65,7 @@ public class UserRepositoryTest {
 		entityManager.persist(roleEmployee);
 		Set<Role> roles = new HashSet<>(Arrays.asList(roleAdmin, roleEmployee));
 		
-		Set<Menu> menus = new HashSet<Menu>(new HashSet<Menu>(Arrays.asList(new Menu("Pizza Margherita", 1, "Feine Pizza."), new Menu("Pizza Prosciutto", 0, "Leckere Pizza."), new Menu("Vegetarische Pizza", 1, "Mit Paprika und Pilze."))));
+		List<Menu> menus = new ArrayList<Menu>(new HashSet<Menu>(Arrays.asList(new Menu("Pizza Margherita", 1, "Feine Pizza."), new Menu("Pizza Prosciutto", 0, "Leckere Pizza."), new Menu("Vegetarische Pizza", 1, "Mit Paprika und Pilze."))));
 		
 		// Stores menuplan in the database
 		Menuplan menuplan = new Menuplan(16, menus, null);

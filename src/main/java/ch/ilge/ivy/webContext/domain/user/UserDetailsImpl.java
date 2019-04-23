@@ -52,16 +52,6 @@ public class UserDetailsImpl implements UserDetails {
 		return grantedAuthorities;
 	}
 	
-	/*
-	ArrayList<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<>();
-		for (Role role : user.getRoles()) {
-			for (Authority authority : role.getAuthorities()) {
-				grantedAuthorities.add(new SimpleGrantedAuthority(authority.getName()));
-			}
-		}
-		return grantedAuthorities;
-	*/
-	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -100,7 +90,7 @@ public class UserDetailsImpl implements UserDetails {
 	 */
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO implement credentials expired check
+		// implement credentials expired check
 		return true;
 	}
 	

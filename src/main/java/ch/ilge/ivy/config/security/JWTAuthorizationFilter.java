@@ -1,7 +1,6 @@
 package ch.ilge.ivy.config.security;
 
 import java.io.IOException;
-import java.util.Optional;
 import java.util.function.BiConsumer;
 
 import javax.servlet.FilterChain;
@@ -16,7 +15,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import ch.ilge.ivy.config.PropertyReader;
-import ch.ilge.ivy.webContext.domain.user.User;
 import ch.ilge.ivy.webContext.domain.user.UserDetailsImpl;
 import ch.ilge.ivy.webContext.domain.user.UserService;
 import io.jsonwebtoken.ExpiredJwtException;

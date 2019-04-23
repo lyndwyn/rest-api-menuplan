@@ -9,7 +9,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 
 /**
- * TODO comment
+ * This class configures/creates the beans for the Logger.
+ *
  * @author Laura Steiner
  *
  */

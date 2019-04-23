@@ -7,7 +7,8 @@ import ch.ilge.ivy.config.generic.ExtendedDTO;
 import ch.ilge.ivy.webContext.domain.authority.dto.AuthorityDTO;
 
 /**
- * TODO commi
+ * DTO for the Entity role.
+ * 
  * @author Laura Steiner
  *
  */

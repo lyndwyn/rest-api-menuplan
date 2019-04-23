@@ -6,8 +6,8 @@ import java.lang.reflect.Method;
 import org.springframework.validation.Errors;
 
 /**
- * TODO
- * @author Laura Steiner
+ * 
+ * @author Santiago Gabriel Vollmar
  *
  */
 public class SingleFieldValidation {
@@ -52,7 +52,7 @@ public class SingleFieldValidation {
 		try {
 			method.invoke(target, errors, field, value);
 		} catch (InvocationTargetException ex) {
-			ex.printStackTrace(); // TODO maybe log this or present it differently
+			ex.printStackTrace(); 
 		} catch (IllegalAccessException ex) {} // this should be impossible (see constructor)
 	}
 }

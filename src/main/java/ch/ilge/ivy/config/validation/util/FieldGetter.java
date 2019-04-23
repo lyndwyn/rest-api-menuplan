@@ -5,8 +5,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * TODO
- * @author Laura Steiner
+ * 
+ * @author Santiago Gabriel Vollmar
  *
  */
 public class FieldGetter {
@@ -37,7 +37,7 @@ public class FieldGetter {
 		try {
 			return getter.invoke(target);
 		} catch (InvocationTargetException ex) {
-			ex.printStackTrace(); // TODO maybe log this or present it differently
+			ex.printStackTrace();
 		} catch (IllegalAccessException e) {} // this should be impossible (see constructor)
 		
 		return null;

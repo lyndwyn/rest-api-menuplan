@@ -12,7 +12,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * This is the entity orders TODO
+ * This is the entity orders.
  * 
  * @author Laura Steiner
  *

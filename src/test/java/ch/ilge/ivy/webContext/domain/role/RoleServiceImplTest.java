@@ -14,6 +14,7 @@ import ch.ilge.ivy.config.generic.ExtendedServiceImplTest;
 import ch.ilge.ivy.webContext.domain.authority.Authority;
 
 /**
+ * This is the JUnit-Test for the ServiceImpl Role.
  * 
  * @author Laura Steiner
  *

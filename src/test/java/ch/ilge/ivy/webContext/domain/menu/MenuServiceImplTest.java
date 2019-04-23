@@ -1,9 +1,6 @@
 package ch.ilge.ivy.webContext.domain.menu;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 import java.util.HashSet;
@@ -18,6 +15,12 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import ch.ilge.ivy.config.generic.ExtendedServiceImplTest;
 
+/**
+ * This is the JUnit-Test for the ServiceImpl Menu.
+ * 
+ * @author Laura Steiner
+ *
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class MenuServiceImplTest extends ExtendedServiceImplTest<MenuServiceImpl, Menu, MenuRepository> {
 	 

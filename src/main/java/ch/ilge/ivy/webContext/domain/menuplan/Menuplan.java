@@ -1,5 +1,6 @@
 package ch.ilge.ivy.webContext.domain.menuplan;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -38,7 +39,7 @@ public class Menuplan extends ExtendedEntity {
 	@JoinTable(name = "menuplan_menu", 
 				joinColumns = @JoinColumn(name = "menuplan_id"), 
 				inverseJoinColumns = @JoinColumn(name = "menu_id"))
-	private Set<Menu> menus;
+	private List<Menu> menus;
 	
 	@OneToMany(
 			cascade = CascadeType.ALL,
@@ -55,7 +56,7 @@ public class Menuplan extends ExtendedEntity {
 	 * @param menus
 	 * @param orders
 	 */
-	public Menuplan(Integer calendarWeek, Set<Menu> menus, Set<Orders> orders) {
+	public Menuplan(Integer calendarWeek, List<Menu> menus, Set<Orders> orders) {
 		super();
 		this.calendarWeek = calendarWeek;
 		this.menus = menus;
@@ -69,7 +70,7 @@ public class Menuplan extends ExtendedEntity {
 	 * @param menus
 	 * @param orders
 	 */
-	public Menuplan(Long id, Integer calendarWeek, Set<Menu> menus, Set<Orders> orders) {
+	public Menuplan(Long id, Integer calendarWeek, List<Menu> menus, Set<Orders> orders) {
 		super(id);
 		this.calendarWeek = calendarWeek;
 		this.menus = menus;
@@ -96,7 +97,7 @@ public class Menuplan extends ExtendedEntity {
 	/**
 	 * @return the menus
 	 */
-	public Set<Menu> getMenus() {
+	public List<Menu> getMenus() {
 		return menus;
 	}
 
@@ -104,7 +105,7 @@ public class Menuplan extends ExtendedEntity {
 	/**
 	 * @param menus the menus to set
 	 */
-	public void setMenus(Set<Menu> menus) {
+	public void setMenus(List<Menu> menus) {
 		this.menus = menus;
 	}
 

@@ -1,14 +1,12 @@
 package ch.ilge.ivy.webContext.domain.menuplan.dto;
 
+import java.util.List;
 import java.util.Set;
 
 import ch.ilge.ivy.config.generic.ExtendedDTO;
 import ch.ilge.ivy.webContext.domain.menu.dto.MenuDTO;
 
 /**
- * This class is the Entity Menuplan. A Menuplan can hold multiple menus and 
- * have multiple orders from different users.
- * 
  * DTO for the Entity Menuplan.
  * 
  * @author Laura Steiner
@@ -18,7 +16,7 @@ public class MenuplanDTO extends ExtendedDTO {
 
 	private Integer calendarWeek;
 	
-	private Set<MenuDTO> menus;
+	private List<MenuDTO> menus;
 	
 	private Set<ExtendedDTO> orders;
 	
@@ -30,7 +28,7 @@ public class MenuplanDTO extends ExtendedDTO {
 	 * @param menus
 	 * @param orders
 	 */
-	public MenuplanDTO(Integer calendarWeek, Set<MenuDTO> menus, Set<ExtendedDTO> orders) {
+	public MenuplanDTO(Integer calendarWeek, List<MenuDTO> menus, Set<ExtendedDTO> orders) {
 		super();
 		this.calendarWeek = calendarWeek;
 		this.menus = menus;
@@ -44,7 +42,7 @@ public class MenuplanDTO extends ExtendedDTO {
 	 * @param menus
 	 * @param orders
 	 */
-	public MenuplanDTO(Long id, Integer calendarWeek, Set<MenuDTO> menus, Set<ExtendedDTO> orders) {
+	public MenuplanDTO(Long id, Integer calendarWeek, List<MenuDTO> menus, Set<ExtendedDTO> orders) {
 		super(id);
 		this.calendarWeek = calendarWeek;
 		this.menus = menus;
@@ -68,14 +66,14 @@ public class MenuplanDTO extends ExtendedDTO {
 	/**
 	 * @return the menus
 	 */
-	public Set<MenuDTO> getMenus() {
+	public List<MenuDTO> getMenus() {
 		return menus;
 	}
 
 	/**
 	 * @param menus the menus to set
 	 */
-	public void setMenus(Set<MenuDTO> menus) {
+	public void setMenus(List<MenuDTO> menus) {
 		this.menus = menus;
 	}
 

@@ -9,7 +9,8 @@ import org.mapstruct.ReportingPolicy;
 import ch.ilge.ivy.webContext.domain.role.Role;
 
 /**
- * TODO commis
+ * This class maps the entity role to dto's and reverse.
+ * 
  * @author Laura Steiner
  *
  */

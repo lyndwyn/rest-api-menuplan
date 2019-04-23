@@ -1,6 +1,6 @@
 package ch.ilge.ivy.webContext.domain.menu;
 
-import java.util.Set;
+import java.util.List;
 
 import ch.ilge.ivy.config.generic.ExtendedService;
 
@@ -14,10 +14,10 @@ import ch.ilge.ivy.config.generic.ExtendedService;
 public interface MenuService extends ExtendedService<Menu>{
 
 	/**
-	 * This method finds random Menus (from each type five)
+	 * This method finds random Menus.
 	 * 
-	 * @return
+	 * @return Set of Menus
 	 */
-	Set<Menu> getRandomMenus();
+	List<Menu> getRandomMenus();
 	
 }

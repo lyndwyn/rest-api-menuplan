@@ -21,8 +21,8 @@ import ch.ilge.ivy.config.validation.annotation.Validation;
 import ch.ilge.ivy.config.validation.annotation.Validations;
 
 /**
- * TODO
- * @author Laura Steiner
+ * 
+ * @author Santiago Gabriel Vollmar
  *
  */
 @Component

@@ -9,7 +9,8 @@ import org.mapstruct.ReportingPolicy;
 import ch.ilge.ivy.webContext.domain.authority.Authority;
 
 /**
- * TODO commis
+ * This class maps the entity authority to dto's and reverse.
+ * 
  * @author Laura Steiner
  *
  */

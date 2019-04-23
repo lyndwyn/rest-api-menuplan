@@ -29,6 +29,11 @@ public interface UserService extends UserDetailsService, ExtendedService<User> {
 	 */
 	void deleteByEmail(String name);
 
+	/**
+	 * This method finds the current logged in User
+	 * 
+	 * @return
+	 */
 	User getPrincipal();
 	
 }

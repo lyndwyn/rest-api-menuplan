@@ -5,7 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/** TODO
+/**
  * This annotation is used to map a validation method to its fields.
  * 
  * @author Moritz Lauper

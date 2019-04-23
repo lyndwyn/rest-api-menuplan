@@ -3,7 +3,6 @@ package ch.ilge.ivy.webContext.domain.menuplan;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -234,7 +233,7 @@ public class MenuplanController {
 	public @ResponseBody ResponseEntity<MenuplanDTO> generateMenuplan() {
 		
 		// Get random Menus (from each type five)
-		Set<Menu> menus = menuService.getRandomMenus();
+		List<Menu> menus = menuService.getRandomMenus();
 		
 		// Set current calendar week and menuplan
 		Calendar cal = Calendar.getInstance();

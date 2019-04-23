@@ -33,6 +33,12 @@ import ch.ilge.ivy.IvyTestApplication;
 import ch.ilge.ivy.webContext.domain.authority.Authority;
 import ch.ilge.ivy.webContext.domain.role.dto.RoleMapper;
 
+/**
+ * This is the JUnit-Test for the controller Role.
+ * 
+ * @author Laura Steiner
+ *
+ */
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = IvyTestApplication.class)
 @WebMvcTest(RoleController.class)

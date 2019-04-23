@@ -1,7 +1,5 @@
 package ch.ilge.ivy.webContext.domain.user;
 
-import java.util.NoSuchElementException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,12 +9,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ch.ilge.ivy.config.generic.ExtendedServiceImpl;
-import ch.ilge.ivy.webContext.domain.order.OrderService;
 
 
 /**
  * This class implements all data access related methods targeted towards the
- * entity role.
+ * entity users.
  * 
  * @author Laura Steiner
  */
@@ -62,6 +59,9 @@ public class UserServiceImpl extends ExtendedServiceImpl<User> implements UserSe
 		((UserRepository) repository).deleteByEmail(name);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public User getPrincipal() {
 		Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();

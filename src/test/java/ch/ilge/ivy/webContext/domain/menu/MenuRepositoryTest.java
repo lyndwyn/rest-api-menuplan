@@ -16,6 +16,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import ch.ilge.ivy.IvyTestApplication;
 
+/**
+ * This is the JUnit-Test for the repository Menu.
+ * 
+ * @author Laura Steiner
+ *
+ */
 @RunWith(SpringRunner.class)
 @TestPropertySource("/application-test.properties")
 @ContextConfiguration(classes = IvyTestApplication.class)

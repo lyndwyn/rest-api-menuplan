@@ -10,7 +10,7 @@ import ch.ilge.ivy.config.validation.annotation.Validation;
 import ch.ilge.ivy.webContext.domain.order.dto.OrderDTO;
 
 /**
- * This class validates the Entity Order
+ * This class validates the Entity Orders
  *
  * @author Laura Steiner
  */

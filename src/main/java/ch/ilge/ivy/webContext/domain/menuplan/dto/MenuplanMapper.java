@@ -10,7 +10,8 @@ import ch.ilge.ivy.webContext.domain.menuplan.Menuplan;
 
 
 /**
- * TODO commis
+ * This class maps the entity menuplan to dto's and reverse.
+ * 
  * @author Laura Steiner
  *
  */

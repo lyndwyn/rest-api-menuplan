@@ -16,8 +16,8 @@ import ch.ilge.ivy.config.validation.util.SingleFieldValidation;
 import ch.ilge.ivy.config.validation.util.ValidationNotFoundException;
 
 /**
- * TODO
- * @author Laura Steiner
+ * 
+ * @author Santiago Gabriel Vollmar
  *
  */
 @Component

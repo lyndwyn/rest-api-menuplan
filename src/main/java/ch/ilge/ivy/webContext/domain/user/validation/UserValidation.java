@@ -11,7 +11,7 @@ import ch.ilge.ivy.config.validation.annotation.Validation;
 import ch.ilge.ivy.webContext.domain.user.dto.UserDTO;
 
 /**
- * This class validates the Entity Menu
+ * This class validates the Entity Users.
  *
  * @author Laura Steiner
  */

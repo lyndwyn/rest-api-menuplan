@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 import org.slf4j.Logger;
-import org.slf4j.Marker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
@@ -16,8 +15,8 @@ import ch.ilge.ivy.config.validation.annotation.Validation;
 import ch.ilge.ivy.config.validation.util.ValidationNotFoundException;
 
 /**
- * TODO
- * @author Laura Steiner
+ * 
+ * @author Santiago Gabriel Vollmar
  *
  */
 @Component

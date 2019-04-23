@@ -1,8 +1,8 @@
 package ch.ilge.ivy.config.validation.util;
 
 /**
- * TODO
- * @author Laura Steiner
+ * 
+ * @author Santiago Gabriel Vollmar
  *
  */
 public class ValidationNotFoundException extends Exception {

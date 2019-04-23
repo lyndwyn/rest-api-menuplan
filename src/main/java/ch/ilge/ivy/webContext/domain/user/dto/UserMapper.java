@@ -9,7 +9,8 @@ import org.mapstruct.ReportingPolicy;
 import ch.ilge.ivy.webContext.domain.user.User;
 
 /**
- * TODO commis
+ * This class maps the entity users to dto's and reverse.
+ * 
  * @author Laura Steiner
  *
  */

@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 import org.springframework.stereotype.Component;
 
-/** TODO
+/** 
  * This annotation is used for map a validation-class to its entity-class.
  * 
  * @author Moritz Lauper

@@ -21,16 +21,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import ch.ilge.ivy.config.generic.ExtendedServiceImplTest;
 import ch.ilge.ivy.webContext.domain.authority.Authority;
-import ch.ilge.ivy.webContext.domain.menu.Menu;
-import ch.ilge.ivy.webContext.domain.menuplan.Menuplan;
-import ch.ilge.ivy.webContext.domain.order.Orders;
 import ch.ilge.ivy.webContext.domain.role.Role;
 
 /**
+ * This is the JUnit-Test for the ServiceImpl User.
  * 
  * @author Laura Steiner
  *
- */ 
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceImplTest extends ExtendedServiceImplTest<UserServiceImpl, User, UserRepository> {
 	
@@ -55,17 +53,6 @@ public class UserServiceImplTest extends ExtendedServiceImplTest<UserServiceImpl
 		Role roleAdmin = new Role("Admin", authorities);
 		Role roleEmployee = new Role("Employee", new HashSet<>(Arrays.asList(authorityRead)));
 		Set<Role> roles = new HashSet<>(Arrays.asList(roleAdmin, roleEmployee));
-
-		// Stores menus in the database
-		Set<Menu> menus = new HashSet<Menu>(new HashSet<Menu>(Arrays.asList(new Menu("Pizza Margherita", 1, "Feine Pizza."), new Menu("Pizza Prosciutto", 0, "Leckere Pizza."), new Menu("Vegetarische Pizza", 1, "Mit Paprika und Pilze."))));
-
-		// Stores menuplan in the database
-		Menuplan menuplan = new Menuplan(16, menus, null);
-
-		// Stores orders in database
-		Orders orderOne = new Orders(3, 0, 2, "Das ist eine Anmerkung.",  menuplan);
-		Orders orderTwo = new Orders(5, 10, 2, "Für Xy bitte kein Paprika auf die Pizza.",  menuplan);
-		Set<Orders> orders = new HashSet<Orders>(Arrays.asList(orderOne, orderTwo));
 				
 		// Stores users in the database
 		userIvy = new User(1L, "ivy@test.ch", "heinz", "Ivy", "Minoretti", Date.valueOf("2020-01-01"), Date.valueOf("2020-01-01"), false, true, false, roles, null);

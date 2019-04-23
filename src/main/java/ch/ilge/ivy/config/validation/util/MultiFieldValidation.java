@@ -7,8 +7,8 @@ import java.util.List;
 import org.springframework.validation.Errors;
 
 /**
- * TODO
- * @author Laura Steiner
+ * 
+ * @author Santiago Gabriel Vollmar
  *
  */
 public class MultiFieldValidation {
@@ -75,7 +75,7 @@ public class MultiFieldValidation {
 		try {
 			method.invoke(target, args);
 		} catch (InvocationTargetException ex) {
-			ex.printStackTrace(); // TODO maybe log this or present it differently
+			ex.printStackTrace(); 
 		} catch (IllegalAccessException ex) {} // this should be impossible (see constructor)
 	}
 }

@@ -16,8 +16,8 @@ import ch.ilge.ivy.config.validation.util.Pair;
 import ch.ilge.ivy.config.validation.util.SingleFieldValidation;
 
 /**
- * TODO
- * @author Laura Steiner
+ * 
+ * @author Santiago Gabriel Vollmar
  *
  */
 public class ValidationClassSkeleton {

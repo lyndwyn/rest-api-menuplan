@@ -11,7 +11,7 @@ import ch.ilge.ivy.config.PropertyReader;
 
 /**
  * This class covers the common methods for the validation.
- * TODO
+ * 
  * @author Moritz Lauper
  */
 public abstract class ExtendedValidation {
@@ -23,27 +23,6 @@ public abstract class ExtendedValidation {
 	public ExtendedValidation() throws IOException {
 		messageReader = new PropertyReader("messages.properties");
 	}
-	
-	// TODO should get handled by StringTrimmerEditor
-	/*
-	public boolean validateEmptyOrWhitespace(Errors errors, String field, String value) {
-		if (!StringUtils.hasText(value.toString())) {
-			errors.rejectValue(field,
-					messageReader.getStringProperty("message.general"));
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean validateEmpty(Errors errors, String field, String value) {
-		if (StringUtils.isEmpty(value)) {
-			errors.rejectValue(field,
-					messageReader.getStringProperty("message.connection"));
-			return true;
-		}
-		return false;
-	}
-	*/
 	
 	/**
 	 * This method validates if the given value matches the given regex.

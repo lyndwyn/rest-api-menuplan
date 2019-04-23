@@ -9,8 +9,8 @@ import java.lang.annotation.Target;
 import org.springframework.stereotype.Component;
 
 /**
- * TODO
- * @author Laura Steiner
+ * 
+ * @author Moritz Lauper
  *
  */
 @Retention(RUNTIME)

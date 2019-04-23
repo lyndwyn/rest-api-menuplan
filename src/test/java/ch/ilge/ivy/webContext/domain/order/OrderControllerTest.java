@@ -38,6 +38,12 @@ import ch.ilge.ivy.webContext.domain.menuplan.Menuplan;
 import ch.ilge.ivy.webContext.domain.order.dto.OrderMapper;
 import ch.ilge.ivy.webContext.domain.user.User;
 
+/**
+ * This is the JUnit-Test for the controller Authority.
+ * 
+ * @author Laura Steiner
+ *
+ */
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = IvyTestApplication.class)
 @WebMvcTest(OrderController.class) 
@@ -48,7 +54,6 @@ public class OrderControllerTest {
 	private Orders orderTwo;
 	private List<Orders> orders;
 	
-	private Orders orderToBeCreated;
 	private Orders orderToBeDeleted;
 	
 	private User userIvy;
@@ -75,7 +80,7 @@ public class OrderControllerTest {
      // Setup menus
 	Menu menuNormal = new Menu("Pizza Prosciutto", 0, "Leckere Pizza.");
 	Menu menuNoPork = new Menu("Pizza Margherita", 1, "Feine Pizza.");
-	Set<Menu> menus = new HashSet<>(Arrays.asList(menuNormal, menuNoPork));
+	List<Menu> menus = new ArrayList<>(Arrays.asList(menuNormal, menuNoPork));
 	
 	// Setup Menuplan
 	menuplan = new Menuplan(1L, 16, menus, null);
@@ -86,8 +91,7 @@ public class OrderControllerTest {
 	orders = new ArrayList<>();
 	orders.add(orderOne);
 	orders.add(orderTwo);
-	
-	orderToBeCreated = new Orders(3, 0, 2, "Das ist eine Anmerkung.",  menuplan);
+
 	orderToBeDeleted = new Orders(2L, 5, 10, 2, "Für Xy bitte kein Paprika auf die Pizza.",  menuplan);
 	
 	Set<Orders> orders = new HashSet<Orders>(Arrays.asList(orderOne, orderTwo));
@@ -134,7 +138,7 @@ public class OrderControllerTest {
 	 * @throws Exception
 	 */
 	@Test
-	public void create_userAlreadyHasOrderThisWeek_returnsBadRequest() throws JsonProcessingException, Exception {
+	public void create_userAlreadyHasOrderThisWeek_returnsForbidden() throws JsonProcessingException, Exception {
 		TestingAuthenticationToken testingAuthenticationToken = new TestingAuthenticationToken(userIvy, null);
         SecurityContextHolder.getContext().setAuthentication(testingAuthenticationToken);
 		

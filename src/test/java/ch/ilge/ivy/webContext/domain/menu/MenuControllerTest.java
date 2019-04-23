@@ -29,6 +29,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ch.ilge.ivy.IvyTestApplication;
 import ch.ilge.ivy.webContext.domain.menu.dto.MenuMapper;
 
+/**
+ * This is the JUnit-Test for the controller Menu.
+ * 
+ * @author Laura Steiner
+ *
+ */
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = IvyTestApplication.class)
 @WebMvcTest(MenuController.class)

@@ -1,7 +1,7 @@
 package ch.ilge.ivy.webContext.domain.menu;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ import ch.ilge.ivy.config.generic.ExtendedServiceImpl;
 public class MenuServiceImpl extends ExtendedServiceImpl<Menu> implements MenuService {
 	
 	/**
-	 * TODO comment
+	 *
 	 * @param repository
 	 */
 	public MenuServiceImpl(MenuRepository repository) {
@@ -31,8 +31,8 @@ public class MenuServiceImpl extends ExtendedServiceImpl<Menu> implements MenuSe
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Set<Menu> getRandomMenus() {
-		Set<Menu> menus = new HashSet<Menu>();
+	public List<Menu> getRandomMenus() {
+		List<Menu> menus = new ArrayList<Menu>();
 		
 		for(int i = 0; i < 3; i++) {
 			menus.addAll(((MenuRepository) repository).getRandomMenus(i, 5));

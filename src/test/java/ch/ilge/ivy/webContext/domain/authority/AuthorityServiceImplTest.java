@@ -10,12 +10,13 @@ import ch.ilge.ivy.config.generic.ExtendedServiceImplTest;
 import ch.ilge.ivy.webContext.domain.authority.Authority;
 
 /**
+ * This is the JUnit-Test for the ServiceImpl Authority.
  * 
  * @author Laura Steiner
  *
  */
 @RunWith(MockitoJUnitRunner.class)
-public class RoleServiceImplTest extends ExtendedServiceImplTest<AuthorityServiceImpl, Authority, AuthorityRepository> { 
+public class AuthorityServiceImplTest extends ExtendedServiceImplTest<AuthorityServiceImpl, Authority, AuthorityRepository> { 
 	
 	@InjectMocks
 	private AuthorityServiceImpl authorityServiceImpl;

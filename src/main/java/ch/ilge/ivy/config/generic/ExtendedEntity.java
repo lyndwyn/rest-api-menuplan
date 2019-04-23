@@ -8,6 +8,11 @@ import javax.persistence.MappedSuperclass;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import ch.ilge.ivy.webContext.domain.authority.Authority;
+import ch.ilge.ivy.webContext.domain.menu.Menu;
+import ch.ilge.ivy.webContext.domain.menuplan.Menuplan;
+import ch.ilge.ivy.webContext.domain.order.Orders;
+import ch.ilge.ivy.webContext.domain.role.Role;
 import ch.ilge.ivy.webContext.domain.user.User;
 import io.swagger.annotations.ApiModel;
 
@@ -18,7 +23,9 @@ import io.swagger.annotations.ApiModel;
  * @author Laura Steiner
  */
 @MappedSuperclass
-@ApiModel(value = "ExtendedEntity", discriminator = "SuperClass", subTypes = {User.class}) // TODO add all subTypes
+@ApiModel(value = "ExtendedEntity", 
+			discriminator = "SuperClass", 
+			subTypes = {User.class, Authority.class, Menu.class, Menuplan.class, Orders.class, Role.class})
 public abstract class ExtendedEntity {
 
 	@Id

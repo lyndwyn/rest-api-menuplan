@@ -3,7 +3,8 @@ package ch.ilge.ivy.webContext.domain.authority.dto;
 import ch.ilge.ivy.config.generic.ExtendedDTO;
 
 /**
- * TODO commi
+ * DTO for the Entity Authority.
+ * 
  * @author Laura Steiner
  *
  */

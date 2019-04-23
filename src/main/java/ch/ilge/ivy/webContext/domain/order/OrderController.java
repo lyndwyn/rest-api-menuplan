@@ -1,6 +1,5 @@
 package ch.ilge.ivy.webContext.domain.order;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -225,27 +224,6 @@ public class OrderController {
 	public ResponseEntity<Void> deleteById(@PathVariable Long id) {
 		orderService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	}
-	
-	
-	@GetMapping({ "fun" })
-	public ResponseEntity<Void> funnyFunFun() {
-		/*
-		User user = userService.findByEmail(orderService.tescht());
-		
-		List<Orders> orders = new ArrayList<>(user.getOrders());
-		List<Long> orderIds = new ArrayList<>();
-		
-		for(int i = 0; i < orders.size(); i++) {
-			orderIds.add(orders.get(i).getId());
-		}
-		
-		Boolean b = orderService.hasOrderThisWeek(orderIds);
-		
-		System.out.println("+++HERE answer: "+ b.toString());
-		*/
-		
-		return new ResponseEntity<>( HttpStatus.OK);
 	}
 
 }

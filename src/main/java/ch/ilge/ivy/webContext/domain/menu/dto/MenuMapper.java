@@ -10,7 +10,8 @@ import ch.ilge.ivy.webContext.domain.menu.Menu;
 
 
 /**
- * TODO commis
+ * This class maps the entity menu to dto's and reverse.
+ * 
  * @author Laura Steiner
  *
  */

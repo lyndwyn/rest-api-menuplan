@@ -30,6 +30,12 @@ import ch.ilge.ivy.IvyTestApplication;
 import ch.ilge.ivy.webContext.domain.authority.Authority;
 import ch.ilge.ivy.webContext.domain.authority.dto.AuthorityMapper;
 
+/**
+ * This is the JUnit-Test for the controller Authority.
+ * 
+ * @author Laura Steiner
+ *
+ */
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = IvyTestApplication.class)
 @WebMvcTest(AuthorityController.class)

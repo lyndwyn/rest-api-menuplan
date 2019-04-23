@@ -1,7 +1,9 @@
 package ch.ilge.ivy.webContext.domain.menuplan;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Before;
@@ -12,7 +14,12 @@ import ch.ilge.ivy.config.generic.ExtendedServiceImplTest;
 import ch.ilge.ivy.webContext.domain.menu.Menu;
 import ch.ilge.ivy.webContext.domain.order.Orders;
 
-
+/**
+ * This is the JUnit-Test for the ServiceImpl Menuplan.
+ * 
+ * @author Laura Steiner
+ *
+ */
 public class MenuplanServiceImplTest extends ExtendedServiceImplTest<MenuplanServiceImpl, Menuplan, MenuplanRepository> {
 	
 	@InjectMocks
@@ -29,7 +36,7 @@ public class MenuplanServiceImplTest extends ExtendedServiceImplTest<MenuplanSer
 		// Stores menus in the database
 		Menu menuNormal = new Menu("Pizza Prosciutto", 0, "Leckere Pizza.");
 		Menu menuNoPork = new Menu("Pizza Margherita", 1, "Feine Pizza.");
-		Set<Menu> menus = new HashSet<>(Arrays.asList(menuNormal, menuNoPork));
+		List<Menu> menus = new ArrayList<>(Arrays.asList(menuNormal, menuNoPork));
 		
 		// Stores orders in database
 		Orders orderOne = new Orders(3, 0, 2, "Das ist eine Anmerkung.",  null);

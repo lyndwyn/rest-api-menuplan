@@ -6,6 +6,12 @@ import org.springframework.context.annotation.Configuration;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * This class configures/creates the mapper.
+ * 
+ * @author Laura Steiner
+ *
+ */
 @Configuration
 public class JacksonConfiguration {
 	

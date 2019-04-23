@@ -3,9 +3,11 @@ package ch.ilge.ivy.config.generic;
 /**
  * This class covers the common attributes of all DTOs.
  * 
+ * It is not abstract so that DTOs can reference only-id nested entities.
+ * 
  * @author Laura Steiner
  */
-public class ExtendedDTO { // not abstract so that DTOs can reference only-id nested entities
+public class ExtendedDTO { 
 	
 	private Long id;
 	

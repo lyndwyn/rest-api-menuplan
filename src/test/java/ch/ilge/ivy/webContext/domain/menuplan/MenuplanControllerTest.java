@@ -33,7 +33,13 @@ import ch.ilge.ivy.IvyTestApplication;
 import ch.ilge.ivy.webContext.domain.menu.Menu;
 import ch.ilge.ivy.webContext.domain.menuplan.dto.MenuplanMapper;
 import ch.ilge.ivy.webContext.domain.order.Orders;
- 
+
+/**
+ * This is the JUnit-Test for the controller Menuplan.
+ * 
+ * @author Laura Steiner
+ *
+ */
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = IvyTestApplication.class)
 @WebMvcTest(MenuplanController.class)
@@ -67,7 +73,7 @@ public class MenuplanControllerTest {
      // Stores menus in the database
 	Menu menuNormal = new Menu("Pizza Prosciutto", 0, "Leckere Pizza.");
 	Menu menuNoPork = new Menu("Pizza Margherita", 1, "Feine Pizza.");
-	Set<Menu> menus = new HashSet<>(Arrays.asList(menuNormal, menuNoPork));
+	List<Menu> menus = new ArrayList<>(Arrays.asList(menuNormal, menuNoPork));
 	
 	// Stores orders in database
 	Orders orderOne = new Orders(3, 0, 2, "Das ist eine Anmerkung.",  null);

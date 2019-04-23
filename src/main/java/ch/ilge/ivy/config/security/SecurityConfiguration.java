@@ -20,7 +20,7 @@ import ch.ilge.ivy.webContext.domain.user.UserService;
 
 
 /**
- * This class is the main security context.
+ * This class is the defines main security context.
  *
  * @author Laura Steiner
  */
