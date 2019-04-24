@@ -32,7 +32,7 @@ import io.swagger.annotations.Authorization;
 import io.swagger.annotations.AuthorizationScope;
 
 /**
- * This class holds the endpoints is responsible for users
+ * This class holds all REST endpoints targeted towards the entity user.
  * 
  * @author Laura Steiner
  *
