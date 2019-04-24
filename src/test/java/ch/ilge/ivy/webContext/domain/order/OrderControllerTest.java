@@ -39,7 +39,7 @@ import ch.ilge.ivy.webContext.domain.order.dto.OrderMapper;
 import ch.ilge.ivy.webContext.domain.user.User;
 
 /**
- * This is the JUnit-Test for the controller Authority.
+ * This is the JUnit-Test for the controller order.
  * 
  * @author Laura Steiner
  *

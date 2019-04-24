@@ -16,7 +16,7 @@ public interface MenuService extends ExtendedService<Menu>{
 	/**
 	 * This method finds random Menus.
 	 * 
-	 * @return Set of Menus
+	 * @return List of Menus
 	 */
 	List<Menu> getRandomMenus();
 	

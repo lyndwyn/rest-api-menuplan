@@ -29,7 +29,7 @@ public class ValidationRegistry {
 	 * key: entity class <br>
 	 * value: validation class <br>
 	 */
-	private Map<Class<?>, Class<?>> registry; // TODO possible heap pollution (pre-1.8: PermGen leak) when code hot-swapping
+	private Map<Class<?>, Class<?>> registry; // possible heap pollution (pre-1.8: PermGen leak) when code hot-swapping
 												// is enabled, because old classes will never get purged (newly loaded classes
 												// have different hashcodes because they were loaded by a different class
 												// loader) --> Use WeakHashMap instead of regular HashMap & wrap value inside a

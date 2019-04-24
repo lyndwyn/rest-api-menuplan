@@ -1,2 +1,2 @@
 # rest-api-menuplan
-Projekt für meine IPA
+Projekt fuer meine IPA

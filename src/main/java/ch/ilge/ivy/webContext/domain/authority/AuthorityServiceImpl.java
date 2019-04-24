@@ -15,7 +15,7 @@ import ch.ilge.ivy.config.generic.ExtendedServiceImpl;
 @Service
 public class AuthorityServiceImpl extends ExtendedServiceImpl<Authority> implements AuthorityService {
 	/**
-	 * TODO comment
+	 * 
 	 * @param repository
 	 */
 	public AuthorityServiceImpl(AuthorityRepository repository) {

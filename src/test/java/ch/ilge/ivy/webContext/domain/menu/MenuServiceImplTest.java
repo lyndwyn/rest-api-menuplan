@@ -3,8 +3,8 @@ package ch.ilge.ivy.webContext.domain.menu;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +32,7 @@ public class MenuServiceImplTest extends ExtendedServiceImplTest<MenuServiceImpl
 	
 	private Menu menuNormal;
 	private Menu menuNoPork;
-	private Set<Menu> menus;
+	private List<Menu> menus;
 
 	@Before
 	public void setup() {
@@ -40,7 +40,7 @@ public class MenuServiceImplTest extends ExtendedServiceImplTest<MenuServiceImpl
 		menuNormal = new Menu(1L, "Pizza Prosciutto", 0, "Leckere Pizza.");
 		menuNoPork = new Menu(2L, "Pizza Margherita", 1, "Feine Pizza.");
 		
-		menus = new HashSet<>();
+		menus = new ArrayList<>();
 		menus.add(menuNormal);
 		
 		super.setup(menuServiceImpl,  menuRepository,  menuNormal,  menuNoPork);

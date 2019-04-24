@@ -1,6 +1,6 @@
 package ch.ilge.ivy.webContext.domain.menu;
 
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -27,7 +27,7 @@ public interface MenuRepository extends ExtendedJpaRepository<Menu> {
 	 * @return	List<Menu>	List of random Menus
 	 */
 	@Query(nativeQuery = true, value = "SELECT * FROM menu WHERE type= :types ORDER BY RANDOM() LIMIT :count")
-	Set<Menu> getRandomMenus(@Param("types") Integer type, 
+	List<Menu> getRandomMenus(@Param("types") Integer type, 
 							@Param("count") Integer count);
 	
 	

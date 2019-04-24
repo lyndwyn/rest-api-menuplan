@@ -40,7 +40,7 @@ public class GenericValidator implements Validator {
 	
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return true; // TODO maybe check if any validation class for this target class is present in
+		return true; // maybe check if any validation class for this target class is present in
 					// the registry
 	}
 	

@@ -15,7 +15,7 @@ import ch.ilge.ivy.config.generic.ExtendedServiceImpl;
 @Service
 public class MenuplanServiceImpl extends ExtendedServiceImpl<Menuplan> implements MenuplanService {
 	/**
-	 * TODO comment
+	 * 
 	 * @param repository
 	 */
 	public MenuplanServiceImpl(MenuplanRepository repository) {

@@ -73,7 +73,7 @@ public class UserDetailsImpl implements UserDetails {
 	 */
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO implement account expired check
+		// implement account expired check
 		return true;
 	}
 	
