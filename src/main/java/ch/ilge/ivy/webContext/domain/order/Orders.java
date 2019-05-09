@@ -37,7 +37,7 @@ public class Orders extends ExtendedEntity {
 	@Column(name = "notice")
 	private String notice;
 	
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne
 	private Menuplan menuplan;
 
 	public Orders() {}
